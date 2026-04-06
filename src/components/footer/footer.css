@@ -1,0 +1,227 @@
+footer {
+    background-color: rgb(3, 8, 24);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.trusted-patners-section {
+    width: 88%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.trusted-patners-section h2 {
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 28px;
+    align-self: flex-start;
+}
+
+.trusted-patners-section h2 .highlight {
+    color: rgba(255, 255, 255, 0.35);
+    background: none;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.35);
+}
+
+.trusted-patners-img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+.trusted-patener-icon {
+    width: 120px;
+    object-fit: contain;
+    opacity: 0.35;
+    filter: grayscale(100%) brightness(2);
+    transition: opacity 0.2s ease;
+}
+
+.trusted-patener-icon:hover {
+    opacity: 0.6;
+}
+
+/* Main footer grid */
+.quicklinks-container {
+    width: 88%;
+    max-width: 1200px;
+    padding: 56px 0 40px;
+}
+
+.quicklink-card-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Brand column */
+.footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100% !important;
+}
+
+.footer-brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+    background: linear-gradient(90deg, #ffffff 0%, rgb(37, 172, 208) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-brand-desc {
+    font-size: 0.83rem;
+    color: rgba(255, 255, 255, 0.38);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.65;
+    max-width: 280px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-address {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-email {
+    font-size: 0.8rem;
+    color: rgba(37, 172, 208, 0.6);
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.2s ease;
+}
+
+.footer-email:hover {
+    color: rgb(37, 172, 208);
+}
+
+/* Link columns */
+.quicklink-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100% !important;
+}
+
+.footer-col-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 6px;
+}
+
+.quicklink-card a {
+    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 0.83rem;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    transition: color 0.2s ease;
+    letter-spacing: 0.1px;
+}
+
+.quicklink-card a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bottom bar */
+.copyright-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 28px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.copyright-txt p {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-family: 'Poppins', sans-serif;
+}
+
+.policy-txt a {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    transition: color 0.2s ease;
+}
+
+.policy-txt a:hover {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+    .quicklink-card-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .trusted-patners-section {
+        width: 92%;
+        padding: 40px 0 30px;
+    }
+
+    .trusted-patners-img-container {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .trusted-patener-icon {
+        width: 80px;
+    }
+
+    .quicklinks-container {
+        width: 92%;
+        padding: 40px 0 30px;
+    }
+
+    .quicklink-card-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+    }
+
+    .footer-brand-col {
+        grid-column: span 2;
+    }
+
+    .copyright-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

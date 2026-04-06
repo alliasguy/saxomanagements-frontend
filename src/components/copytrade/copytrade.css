@@ -1,0 +1,85 @@
+.copytrade-header {
+    text-transform: none !important;
+    font-size: 2.8rem !important;
+    font-weight: 800 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.forex-img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.copy-trade-section {
+    padding: 80px 0;
+    background-color: var(--primary-color);
+}
+
+.copy-trade-wrapper {
+    padding: 0;
+    gap: 60px;
+}
+
+.about-copy-trade-section {
+    width: 88%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.about-page-img {
+    width: 44%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Teal border accent on image */
+.about-page-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 1px solid rgba(37, 172, 208, 0.2);
+    pointer-events: none;
+}
+
+/* Text side */
+.copy-trade-text {
+    align-self: center;
+}
+
+.copy-trade-text p {
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-size: 0.97rem;
+    line-height: 1.8;
+    margin-top: 20px;
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .copy-trade-section {
+        padding: 50px 0;
+    }
+
+    .about-copy-trade-section {
+        flex-direction: column-reverse;
+        width: 92%;
+    }
+
+    .about-page-img {
+        width: 100%;
+        height: 280px;
+        margin-bottom: 24px;
+    }
+
+    .copytrade-header {
+        font-size: 2rem !important;
+    }
+}

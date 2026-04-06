@@ -1,0 +1,193 @@
+.TraderListSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    background-color: var(--primary-color);
+}
+
+.traderListSectionWrapper {
+    width: 88%;
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.traderListSectionCardContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.traderListCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 22px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    height: auto;
+    min-height: 180px;
+    gap: 16px;
+    margin: 0;
+}
+
+.traderListCard:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    margin-top: 0;
+    transform: translateY(-3px);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.traderProfileContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.traderListProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.traderListProfilePicture {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.traderListProfileName {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.traderListProfileFirstname {
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: capitalize;
+}
+
+.traderListProfileLastname {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+}
+
+.copyBtn {
+    padding: 5px 14px;
+    border-radius: 6px;
+    background: rgba(25, 123, 150, 0.2);
+    border: 1px solid rgba(37, 172, 208, 0.3);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.copyBtn p {
+    color: rgb(37, 172, 208);
+    text-transform: lowercase;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.copyBtn:hover {
+    background: rgba(37, 172, 208, 0.18);
+    border-color: rgba(37, 172, 208, 0.6);
+}
+
+.traderPerformanceContainer {
+    text-align: left;
+    width: 100%;
+}
+
+.traderPerformanceContainer h3 {
+    color: rgb(72, 199, 130);
+    font-size: 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.traderPerformanceContainer p {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.traderPerformanceContainer small {
+    font-size: 0.78rem;
+    color: rgba(72, 199, 130, 0.6);
+    font-family: 'Poppins', sans-serif;
+}
+
+.traderListCardFooter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.riskLevelContainer {
+    display: none;
+}
+
+.traderFollowerContainer p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+    .traderListSectionCardContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .TraderListSection {
+        padding: 50px 0;
+    }
+
+    .traderListSectionWrapper {
+        width: 92%;
+    }
+
+    .traderListSectionCardContainer {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .traderListCard {
+        min-height: auto;
+    }
+
+    .traderPerformanceContainer h3 {
+        font-size: 1.8rem;
+    }
+}

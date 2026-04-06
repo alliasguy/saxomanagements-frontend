@@ -1,0 +1,97 @@
+.videoframe-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+}
+
+.videoframe-text-container {
+    width: 88%;
+    max-width: 1200px;
+    padding: 0 0 48px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.videoframe-text-container h1 {
+    font-size: 2.8rem;
+    color: white;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.4px;
+    line-height: 1.1;
+}
+
+.videoframe-text-container p {
+    width: 55%;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Section label above headings */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.header-line {
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: rgb(37, 172, 208);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.header h2 {
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2.2px !important;
+    text-transform: uppercase !important;
+    color: rgb(37, 172, 208) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.highlight {
+    background: linear-gradient(90deg, rgb(22, 104, 126) 0%, rgb(37, 172, 208) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media screen and (max-width: 767px) {
+    .videoframe-text-container h1 {
+        font-size: 2rem;
+    }
+
+    .videoframe-text-container {
+        width: 92%;
+        padding-bottom: 32px;
+    }
+
+    .video-wrapper {
+        padding: 10px 0 20px;
+    }
+
+    .videoframe-text-container p {
+        width: 100%;
+    }
+}

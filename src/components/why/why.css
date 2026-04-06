@@ -1,0 +1,136 @@
+.why-choose-section {
+    padding: 90px 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.why-choose-us-img-container {
+    width: 45%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mockup {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.why-choose-us-card-container {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.why-choose-us-text-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.why-choose-us-text-container h1 {
+    font-size: 2.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+    margin: 10px 0 14px;
+}
+
+.why-choose-us-text-container p {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.93rem;
+    line-height: 1.7;
+    width: 95%;
+}
+
+/* Feature card — left-border accent */
+.why-choose-us-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 2px solid rgba(37, 172, 208, 0.3);
+    padding: 22px 24px;
+    background: rgba(37, 172, 208, 0.025);
+    border-radius: 0 8px 8px 0;
+    transition: border-left-color 0.2s ease, background 0.2s ease;
+    cursor: default;
+}
+
+.why-choose-us-card:hover {
+    border-left-color: rgb(37, 172, 208);
+    background: rgba(37, 172, 208, 0.055);
+}
+
+.card-counter {
+    position: static;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: rgb(37, 172, 208);
+    opacity: 0.75;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Hide large icon — keep design clean */
+.why-choose-us-card svg {
+    display: none;
+}
+
+.why-choose-us-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 0.95rem;
+    text-transform: none;
+    margin: 0 0 8px;
+    letter-spacing: 0.1px;
+}
+
+.why-choose-us-card p {
+    color: rgba(255, 255, 255, 0.45);
+    text-align: left;
+    font-size: 0.87rem;
+    line-height: 1.65;
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+    .why-choose-section {
+        padding: 60px 0;
+        flex-direction: column;
+    }
+
+    .why-choose-us-img-container,
+    .why-choose-us-card-container {
+        width: 88%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .why-choose-section {
+        padding: 50px 0;
+        flex-direction: column;
+    }
+
+    .why-choose-us-img-container {
+        width: 92%;
+    }
+
+    .why-choose-us-card-container {
+        width: 92%;
+    }
+
+    .why-choose-us-text-container h1 {
+        font-size: 1.9rem;
+    }
+}

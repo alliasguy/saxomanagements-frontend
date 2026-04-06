@@ -1,0 +1,122 @@
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    background-color: var(--primary-color);
+}
+
+#contact {
+    background-color: var(--primary-color);
+    width: 100%;
+}
+
+.contact-wrapper {
+    width: 88%;
+    max-width: 1200px;
+    background: rgba(37, 172, 208, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(37, 172, 208, 0.15);
+    padding: 56px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.contact-p h1 {
+    font-size: 2.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+    margin: 10px 0 16px;
+}
+
+.contact-p p {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 12px;
+}
+
+.contact-card {
+    margin: 24px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    height: auto;
+}
+
+.contact-ball {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(37, 172, 208, 0.1);
+    border: 1px solid rgba(37, 172, 208, 0.25);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(37, 172, 208);
+    transition: background 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.contact-ball:hover {
+    background: rgba(37, 172, 208, 0.18);
+    border-color: rgba(37, 172, 208, 0.5);
+}
+
+.contact-ball svg {
+    color: rgb(37, 172, 208);
+    margin: auto;
+}
+
+.contact-form-container {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+}
+
+.contact-line {
+    background: rgb(37, 172, 208);
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        padding: 40px;
+        gap: 32px;
+    }
+
+    .contact-form-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .contact-section {
+        padding: 50px 0;
+    }
+
+    .contact-wrapper {
+        width: 92%;
+        flex-direction: column;
+        padding: 32px 28px;
+        gap: 24px;
+    }
+
+    .contact-form-container {
+        width: 100%;
+    }
+
+    .contact-p h1 {
+        font-size: 1.9rem;
+    }
+}

@@ -1,0 +1,105 @@
+.roadmapSection{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0px 150px 0px;
+background: rgb(2, 6, 23);
+    background: radial-gradient(circle farthest-corner at center center, rgb(37, 172, 208) 0%, rgb(2, 6, 23) 29%);
+}
+.rodmapWrapper{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.roadmapContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.roadmapCard{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+}
+.roadmapCounter{
+padding: 0px 20px;
+align-self: flex-start;
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+}
+.roadmapCounter h1{
+    font-size: 8rem;
+    color: rgb(33, 165, 202);
+    align-self: flex-start;
+    font-family: "Palanquin",'Poppins',sans-serif;
+    margin-bottom: auto;
+    font-weight: 600;
+}
+
+.roadmapCardText{
+    text-align: left;
+    padding-right: 10px;
+}
+.roadmapCardText h2{
+    color: white;
+    font-family: "Palanquin", 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+.roadmapCardText p{
+    color: rgb(181, 181, 181);
+    font-size: .9rem;
+}
+.roadmapSvgContainer{
+    color: rgb(33, 165, 202);
+    font-size: 3.5rem;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+    
+    .roadmapContainer{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .roadmapCard{
+        width: 45%;
+        margin: 15px 0px;
+    }
+    .roadmapSvgContainer{
+        margin: 15px 10px;
+        display: none;
+    }
+    .roadmapSection{
+        padding: 50px 0px 0px 0px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .roadmapContainer {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    
+        .roadmapCard {
+            width: 100%;
+            margin: 15px 0px;
+        }
+    
+        .roadmapSvgContainer {
+            margin: 15px 10px;
+            display: none;
+        }
+    
+        .roadmapSection {
+            padding: 50px 0px 0px 0px;
+        }
+}
