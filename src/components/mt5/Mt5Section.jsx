@@ -10,7 +10,7 @@ const Mt5Section = () => {
             <div className="why-choose-us-text-container about-text copy-trade-text mt5-text">
                 <h1 data-aos="fade-up">Start <span className="highlight">copying </span>& start   <span className="highlight">earning </span></h1>
                 <p data-aos="fade-up">
-                Discover the brilliance of Mirostat Trading — an innovative platform that flawlessly reflects the achievements of skilled traders, enabling you to copy proven strategies or share your own approach for others to follow, creating opportunities for mutual growth and profit.
+                Discover the power of Saxo Managements — a professional platform that replicates the trades of skilled experts directly into your account. Copy proven strategies effortlessly and let experienced traders drive your growth.
               </p>
               <button className="launch-btn cssbuttons-io" data-aos="fade-up" onClick={()=>{
                         navigate('/signup')
@@ -18,9 +18,6 @@ const Mt5Section = () => {
                 <span>start now!</span>
               </button>
         </div>
-        <div className="about-img-container mt5-img" data-aos="fade-up">
-            <img src="/mirrorstatmockup12.png" className='forex-img '/>
-            </div>
         </div>
     </div>
   )

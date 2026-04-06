@@ -16,6 +16,9 @@
 .mt5-text h1{
     font-size: 3rem;
 }
+.mt5-text p {
+    max-width: 480px;
+}
 @media (max-width: 990px) {
     .mt5-wrapper{
         flex-direction: column-reverse;

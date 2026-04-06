@@ -406,3 +406,115 @@ tbody{
         width: 100%;
     }
 }
+
+/* View profile button */
+.view-profile-btn {
+    padding: 5px 10px;
+    background: rgba(37, 172, 208, 0.1);
+    border: 1px solid rgba(37, 172, 208, 0.4);
+    color: rgb(37, 172, 208);
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Profile modal */
+.profile-modal {
+    max-width: 600px;
+    width: 90vw;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.profile-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 8px 0;
+}
+
+.profile-modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-modal-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.profile-modal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-modal-item-full {
+    grid-column: span 2;
+}
+
+.profile-modal-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.35);
+}
+
+.profile-modal-value {
+    font-size: 0.88rem;
+    color: white;
+    font-weight: 500;
+}
+
+.profile-modal-no-kyc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
+}
+
+.kyc-status-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+}
+
+.kyc-verified {
+    color: rgb(72, 199, 130);
+    background: rgba(72, 199, 130, 0.1);
+    border-color: rgba(72, 199, 130, 0.3);
+}
+
+.kyc-pending {
+    color: rgba(255,200,0,0.9);
+    background: rgba(255,200,0,0.08);
+    border-color: rgba(255,200,0,0.3);
+}
+
+.kyc-doc-link {
+    font-size: 0.85rem;
+    color: rgb(37, 172, 208);
+    text-decoration: underline;
+    cursor: pointer;
+}

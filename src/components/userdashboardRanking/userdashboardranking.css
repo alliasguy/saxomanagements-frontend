@@ -1,16 +1,398 @@
-.current-rank-section{
+/* Plans page wrapper */
+.plans-page-section {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 0 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.plans-page-header {
+    margin-bottom: 24px;
+}
+
+.plans-page-header h1 {
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.3px;
+}
+
+.plans-page-header p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    margin-top: 6px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Current plan card */
+.current-plan-card {
+    background: rgba(37, 172, 208, 0.06);
+    border: 1px solid rgba(37, 172, 208, 0.3);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.current-plan-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(37, 172, 208);
+    background: rgba(37, 172, 208, 0.12);
+    border: 1px solid rgba(37, 172, 208, 0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    width: fit-content;
+}
+
+.current-plan-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.current-plan-label {
+    font-size: 0.72rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.38);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.current-plan-name {
+    font-size: 1.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.3px;
+}
+
+.current-plan-amount {
+    font-size: 1.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: rgb(72, 199, 130);
+    letter-spacing: -0.3px;
+}
+
+.current-plan-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 20px;
+}
+
+.plan-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.plan-detail-label {
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.plan-detail-value {
+    font-size: 0.92rem;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: 500;
+}
+
+/* No plan card */
+.no-plan-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.no-plan-icon {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.no-plan-card h3 {
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.no-plan-card p {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.65;
+    max-width: 420px;
+}
+
+.no-plan-card p strong {
+    color: white;
+}
+
+/* Upgrade/fund button */
+.plan-upgrade-btn {
+    margin-top: 4px;
+    padding: 11px 22px;
+    background: rgba(37, 172, 208, 0.12);
+    border: 1px solid rgba(37, 172, 208, 0.4);
+    color: rgb(37, 172, 208);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    width: fit-content;
+}
+
+.plan-upgrade-btn:hover {
+    background: rgba(37, 172, 208, 0.22);
+    border-color: rgb(37, 172, 208);
+    color: white;
+}
+
+/* All plans grid */
+.all-plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plan-tier-card {
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background 0.2s ease;
+}
+
+.plan-tier-card:last-child {
+    border-right: none;
+}
+
+.plan-tier-featured {
+    background: rgba(37, 172, 208, 0.04);
+    border-right: 1px solid rgba(37, 172, 208, 0.2) !important;
+}
+
+.plan-tier-active {
+    background: rgba(72, 199, 130, 0.04) !important;
+    border: 1px solid rgba(72, 199, 130, 0.25) !important;
+}
+
+.plan-tier-badge {
+    display: inline-block;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgb(37, 172, 208);
+    background: rgba(37, 172, 208, 0.1);
+    border: 1px solid rgba(37, 172, 208, 0.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+    width: fit-content;
+    margin-bottom: 6px;
+}
+
+.plan-tier-badge-active {
+    color: rgb(72, 199, 130);
+    background: rgba(72, 199, 130, 0.1);
+    border-color: rgba(72, 199, 130, 0.25);
+}
+
+.plan-tier-name {
+    font-size: 0.72rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.plan-tier-featured .plan-tier-name {
+    color: rgb(37, 172, 208);
+}
+
+.plan-tier-price {
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.4px;
+    margin: 2px 0;
+}
+
+.plan-tier-range {
+    font-size: 0.78rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 8px;
+}
+
+.plan-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 16px;
+    margin-bottom: 8px;
+    flex: 1;
+}
+
+.plan-tier-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.plan-tier-dot {
+    width: 14px;
+    height: 1.5px;
+    background: rgba(37, 172, 208, 0.5);
+    flex-shrink: 0;
+}
+
+.plan-tier-active .plan-tier-dot {
+    background: rgba(72, 199, 130, 0.6);
+}
+
+/* CTA buttons on plan cards */
+.plan-tier-btn {
+    margin-top: 6px;
+    padding: 9px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.plan-tier-btn:hover {
+    background: rgba(37, 172, 208, 0.1);
+    border-color: rgba(37, 172, 208, 0.4);
+    color: white;
+}
+
+.plan-tier-btn-active {
+    background: rgba(72, 199, 130, 0.08);
+    border-color: rgba(72, 199, 130, 0.25);
+    color: rgb(72, 199, 130);
+    cursor: default;
+}
+
+.plan-tier-btn-active:hover {
+    background: rgba(72, 199, 130, 0.08);
+    border-color: rgba(72, 199, 130, 0.25);
+    color: rgb(72, 199, 130);
+}
+
+/* legacy - keep for dashboard homepage */
+.current-rank-section {
     width: 100%;
     background-color: rgb(8, 8, 8);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 0px;
+    padding: 20px 0;
     border-radius: 20px;
 }
-.rank-plan-container{
-    padding: 0px 10px ;
+
+.rank-plan-container {
+    padding: 0 10px;
 }
-.my-value{
+
+.my-value {
     color: white !important;
     font-size: 1.5rem;
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+    .current-plan-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .all-plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-tier-card {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .plan-tier-card:last-child {
+        border-bottom: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .plans-page-section {
+        width: 92%;
+        padding: 20px 0 36px;
+    }
+
+    .current-plan-card {
+        padding: 22px 20px;
+    }
+
+    .current-plan-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .all-plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-tier-card {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .plan-tier-card:last-child {
+        border-bottom: none;
+    }
+
+    .current-plan-name,
+    .current-plan-amount {
+        font-size: 1.4rem;
+    }
 }

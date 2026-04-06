@@ -226,68 +226,44 @@ const Userdashboardhomepage = ({route}) => {
         <div className="current-rank-section">
           <div className="active-trader-container">
           <div className="videoframe-text-container treader-header">
-          <h1>Your current <span className="highlight">Rank</span></h1>
+          <h1>Your current <span className="highlight">Plan</span></h1>
             </div>
+            {userData && userData.funded >= 3000 ? (
               <div className="traders-card active-trader-card">
-              <div className="trader-card-header">
-                <div className="trader-card-image-container">
-                  
-                <img src={`${
-                          userData 
-                            ? userData.funded > 20000 
-                              ? '/diamond.png' 
-                              : userData.funded > 5000 
-                                ? '/download-removebg-preview (2).png'  // Gold image
-                                : '/images-removebg-preview.png'        // Silver image
-                            : ''
-                        }`} 
-                        alt="" 
-                        className='trader-card-image' 
-                      />
-                </div>
-                <div className="trader-card-text-container">
-                  <h3 className="trader-name">{`${
-                          userData 
-                            ? userData.funded > 20000 
-                              ? 'Diamond' 
-                              : userData.funded > 5000 
-                                ? 'gold'  // Gold 
-                                : 'silver'        // Silver 
-                            : ''
-                        }`} </h3>
-                  <p className="trader-description">Rank</p>
-                </div>
-              </div>
-              <div className="trader-perfomance-container">
-                <div className="trader-performance">
-                  <div className="trader-performance-item">
-                    <p className="performance-label">capital Range</p>
-                    <p className="performance-value my-value">{`${
-                          userData 
-                            ? userData.funded > 20000 
-                              ? '$20,001 - unlimited' //diamond
-                              : userData.funded > 5000 
-                                ? '$5001- $20,000'  // Gold 
-                                : '$0- $5,000'        // Silver 
-                            : ''
-                        }`}</p>
+                <div className="trader-card-header">
+                  <div className="trader-card-text-container">
+                    <h3 className="trader-name">
+                      {userData.funded >= 21000 ? 'Diamond Plan' : userData.funded >= 11000 ? 'Medium Plan' : 'Starter Plan'}
+                    </h3>
+                    <p className="trader-description">Active Plan</p>
                   </div>
-                      <div className="trader-performance-item">
-                        <p className="performance-label">bonus</p>
-                        <p className="performance-value my-value">{`${
-                          userData 
-                            ? userData.funded > 20000 
-                              ? '$500' //diamond
-                              : userData.funded > 5000 
-                                ? '$100'  // Gold 
-                                : '$50'   // Silver 
-                            : ''
-                        }`}</p>
-                      </div>
+                </div>
+                <div className="trader-perfomance-container">
+                  <div className="trader-performance">
+                    <div className="trader-performance-item">
+                      <p className="performance-label">Capital Range</p>
+                      <p className="performance-value my-value">
+                        {userData.funded >= 21000 ? '$21,000 – $100,000' : userData.funded >= 11000 ? '$11,000 – $20,999' : '$3,000 – $10,999'}
+                      </p>
+                    </div>
+                    <div className="trader-performance-item">
+                      <p className="performance-label">Leverage</p>
+                      <p className="performance-value my-value">
+                        {userData.funded >= 21000 ? '1:100' : userData.funded >= 11000 ? '1:50' : '1:20'}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
+            ) : (
+              <div className="traders-card active-trader-card" style={{padding:'24px', textAlign:'left'}}>
+                <h3 style={{color:'rgba(255,255,255,0.6)', fontFamily:'Poppins', fontWeight:500, fontSize:'0.95rem'}}>No active plan</h3>
+                <p style={{color:'rgba(255,255,255,0.35)', fontFamily:'Poppins', fontSize:'0.82rem', marginTop:'6px', lineHeight:'1.6'}}>
+                  Deposit a minimum of <strong style={{color:'white'}}>$3,000</strong> to activate your Starter Plan.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
         {userData && dailyTrades.length !== 0 ? 
           <div className="page-swiper-wrapper trans-page">

@@ -88,7 +88,7 @@ const Userdashboardheader = ({route}) => {
                       <div className="dashboard-svg-container">
                           <FiAward />
                       </div>
-                      <Link to='/ranking'>ranking</Link>
+                      <Link to='/ranking'>plans</Link>
                     </li>
                     <li className="dashboard-links">
                       <div className="dashboard-svg-container">

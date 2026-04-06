@@ -34,50 +34,57 @@ const UserdashboardKyc = ({route}) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const uploadDocument = async (file) => {
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'upload');
+    const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload', {
+      method: 'POST',
+      body: data,
+    });
+    const res = await req.json();
+    return res.secure_url || '';
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const {
-      firstName,
-      lastName,
-      email,
-      country,
-      state,
-      postalCode,
-      address,
-      document,
-    } = formData;
+    const { firstName, lastName, email: kycEmail, country, state, postalCode, address, document } = formData;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !country ||
-      !state ||
-      !postalCode ||
-      !address ||
-      !document
-    ) {
+    if (!firstName || !lastName || !kycEmail || !country || !state || !postalCode || !address || !document) {
       return Swal.fire('Incomplete Form', 'Please fill all fields and upload a document.', 'warning');
     }
 
-    Swal.fire(
-      'KYC Submitted!',
-      'Your KYC documents have been successfully submitted and are under review.',
-      'success'
-    );
+    const token = localStorage.getItem('token');
+    if (!token) return;
 
-    e.target.reset();
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      country: '',
-      state: '',
-      postalCode: '',
-      address: '',
-      document: null,
-    });
+    try {
+      setLoader(true);
+      const documentUrl = await uploadDocument(document);
+
+      const response = await fetch(`${route}/api/submitKyc`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': token,
+        },
+        body: JSON.stringify({ firstName, lastName, country, state, postalCode, address, documentUrl }),
+      });
+
+      const data = await response.json();
+      setLoader(false);
+
+      if (data.status === 200) {
+        Swal.fire('KYC Submitted!', 'Your KYC documents have been successfully submitted and are under review.', 'success');
+        e.target.reset();
+        setFormData({ firstName: '', lastName: '', email: '', country: '', state: '', postalCode: '', address: '', document: null });
+      } else {
+        Swal.fire('Error', data.message || 'Submission failed. Please try again.', 'error');
+      }
+    } catch (error) {
+      setLoader(false);
+      Swal.fire('Error', 'Something went wrong. Please try again.', 'error');
+    }
   };
   useEffect(() => {
     const getData = async () => {

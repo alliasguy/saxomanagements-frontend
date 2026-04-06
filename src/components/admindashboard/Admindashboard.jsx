@@ -291,8 +291,10 @@ const Admindashboard = ({ route }) => {
   const [selectedValue, setSelectedValue] = useState()
   const [showStatus, setShowStatus] = useState(false)
   const [debitModal,setDebitModal] = useState(false)
-  
-  
+  const [showProfileModal, setShowProfileModal] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(null)
+
+
   const logout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -783,6 +785,56 @@ const Admindashboard = ({ route }) => {
             </motion.div>
             }
             {
+            showProfileModal && selectedUser &&
+            <motion.div>
+              <div className="modal-container">
+                <div className="modal profile-modal">
+                  <div className="modal-header">
+                    <h2>user profile</h2>
+                  </div>
+                  <MdClose className='close-modal-btn' onClick={() => setShowProfileModal(false)} />
+                  <div className="profile-modal-body">
+                    <div className="profile-modal-section">
+                      <h4 className="profile-modal-section-title">Account Info</h4>
+                      <div className="profile-modal-grid">
+                        <div className="profile-modal-item"><span className="profile-modal-label">First Name</span><span className="profile-modal-value">{selectedUser.firstname || '—'}</span></div>
+                        <div className="profile-modal-item"><span className="profile-modal-label">Last Name</span><span className="profile-modal-value">{selectedUser.lastname || '—'}</span></div>
+                        <div className="profile-modal-item"><span className="profile-modal-label">Email</span><span className="profile-modal-value">{selectedUser.email || '—'}</span></div>
+                        <div className="profile-modal-item"><span className="profile-modal-label">Username</span><span className="profile-modal-value">{selectedUser.username || '—'}</span></div>
+                        <div className="profile-modal-item"><span className="profile-modal-label">Phone</span><span className="profile-modal-value">{selectedUser.phonenumber || '—'}</span></div>
+                        <div className="profile-modal-item"><span className="profile-modal-label">Balance</span><span className="profile-modal-value">${selectedUser.funded || 0} USD</span></div>
+                      </div>
+                    </div>
+                    <div className="profile-modal-section">
+                      <h4 className="profile-modal-section-title">
+                        KYC Information
+                        <span className={`kyc-status-badge ${selectedUser.kycSubmitted ? 'kyc-verified' : 'kyc-pending'}`}>
+                          {selectedUser.kycSubmitted ? 'Submitted' : 'Not Submitted'}
+                        </span>
+                      </h4>
+                      {selectedUser.kycSubmitted ? (
+                        <div className="profile-modal-grid">
+                          <div className="profile-modal-item"><span className="profile-modal-label">Country</span><span className="profile-modal-value">{selectedUser.country || '—'}</span></div>
+                          <div className="profile-modal-item"><span className="profile-modal-label">State</span><span className="profile-modal-value">{selectedUser.state || '—'}</span></div>
+                          <div className="profile-modal-item"><span className="profile-modal-label">Postal Code</span><span className="profile-modal-value">{selectedUser.zipcode || '—'}</span></div>
+                          <div className="profile-modal-item profile-modal-item-full"><span className="profile-modal-label">Address</span><span className="profile-modal-value">{selectedUser.address || '—'}</span></div>
+                          {selectedUser.kycDocument && (
+                            <div className="profile-modal-item profile-modal-item-full">
+                              <span className="profile-modal-label">Document</span>
+                              <a href={selectedUser.kycDocument} target="_blank" rel="noreferrer" className="kyc-doc-link">View Document</a>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="profile-modal-no-kyc">This user has not submitted KYC documents yet.</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            }
+            {
             showTraderLogForm &&
             <motion.div 
             
@@ -923,6 +975,7 @@ const Admindashboard = ({ route }) => {
                               <td>delete</td>
                               <td>approve withdraw</td>
                               <td>mail to</td>
+                              <td>profile</td>
                             </tr>
                           </thead>
                           <tbody>
@@ -973,6 +1026,12 @@ const Admindashboard = ({ route }) => {
                                   </td>
                                   <td>
                                     <a  href={`mailto:${refer.email}`} className='mail-btn'>email</a>
+                                  </td>
+                                  <td>
+                                    <span onClick={() => {
+                                      setSelectedUser(refer)
+                                      setShowProfileModal(true)
+                                    }} className='view-profile-btn'>view</span>
                                   </td>
                                 </tr>
                               )
