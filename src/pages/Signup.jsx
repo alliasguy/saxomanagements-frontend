@@ -142,7 +142,7 @@ useEffect(() => {
 
           const adminData = {
             service_id: 'service_yqknanp',
-            template_id: 'template_0gkkear',
+            template_id: 'template_vd5j2eh',
             user_id: '0wcKB0jFnO7iPqwgZ',
             template_params: {
                 'name': `Bro`,
