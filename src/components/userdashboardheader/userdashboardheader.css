@@ -444,43 +444,58 @@
 /* ─── NOTIFICATION BANNER ─────────────────────────── */
 .ud-notice {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
     background: rgba(37,172,208,0.07);
     border: 1px solid rgba(37,172,208,0.2);
     border-radius: 10px;
-    padding: 10px 14px;
+    padding: 14px 16px;
     margin-bottom: 24px;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: rgba(255,255,255,0.6);
-    line-height: 1;
-    min-height: 0;
+    line-height: 1.5;
+    width: 100%;
 }
 
 .ud-notice span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
     flex: 1;
     min-width: 0;
-    line-height: 1.4;
 }
 
-.ud-notice a { color: rgb(37,172,208); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.ud-notice a { color: rgb(37,172,208); font-weight: 600; text-decoration: none; }
+
+.ud-notice-close-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+}
 
 .ud-notice-close {
     background: none;
     border: none;
-    color: rgba(255,255,255,0.3);
     cursor: pointer;
-    font-size: 0.9rem;
+    padding: 0;
+    display: flex;
+}
+
+.ud-notice-close-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
     display: flex;
     align-items: center;
-    flex-shrink: 0;
-    padding: 2px;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    transition: background 0.15s, color 0.15s;
+}
+
+.ud-notice-close:hover .ud-notice-close-icon {
+    background: rgba(255,255,255,0.15);
+    color: white;
 }
 
 /* ─── MOBILE BOTTOM NAV ───────────────────────────── */

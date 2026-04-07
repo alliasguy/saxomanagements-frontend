@@ -10,7 +10,7 @@ import Loader from '../Loader'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 
 const plans = [
-  { id:1, type:'Starter Plan',     min:500,    max:4999,    percent:'20%', duration:'2 days',  color:'rgb(37,172,208)' },
+  { id:1, type:'Starter Plan',     min:100,    max:4999,    percent:'20%', duration:'2 days',  color:'rgb(37,172,208)' },
   { id:2, type:'Gold Plan',        min:5000,   max:19999,   percent:'35%', duration:'4 days',  color:'rgb(255,180,0)' },
   { id:3, type:'Premium Plan',     min:20000,  max:49999,   percent:'50%', duration:'7 days',  color:'rgb(160,100,255)' },
   { id:4, type:'Diamond Plan',     min:50000,  max:99000,   percent:'65%', duration:'10 days', color:'rgb(72,199,130)' },

@@ -64,7 +64,7 @@ const MobileDropdown = ({route,showStatus,closeMenu}) => {
                 <div className="dropdown-deposit-container">
                     <h3>total amount</h3>
                     <h2>${userData ? userData.funded : ''} USD</h2>
-                    <p>Plan: {userData && userData.funded >= 21000 ? 'Diamond' : userData && userData.funded >= 11000 ? 'Medium' : userData && userData.funded >= 3000 ? 'Starter' : 'No active plan'}</p>
+                    <p>Plan: {userData && userData.funded >= 21000 ? 'Diamond' : userData && userData.funded >= 11000 ? 'Medium' : userData && userData.funded >= 100 ? 'Starter' : 'No active plan'}</p>
                 </div>
                 <div className="mobile-tabs">
                 <div className="dropdown-tabs" onClick={()=>{

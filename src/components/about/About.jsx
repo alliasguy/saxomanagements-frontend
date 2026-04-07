@@ -16,7 +16,7 @@ const About = () => {
                 <h1>Market  <span className="highlight">overview</span></h1>
                 <p>Grab an overview of global markets including price changes, open, high, low, and close values for selected instruments.</p>
         </div>
-        <img src="/mirrorstatmockup7.png" alt="" className="mockup" data-aos="fade-up"/>
+        <img src="/saxomockup3.png" alt="" className="mockup" data-aos="fade-up"/>
         </div>
       <div className="why-choose-us-card-container">
         <div className="why-choose-us-text-container">

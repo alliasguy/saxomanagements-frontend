@@ -21,7 +21,7 @@ const Options = () => {
           <div className='about-section copy-trade-section'>
             <div className="about-wrapper copy-trade-wrapper about-copy-trade-section forex-copy-trade-section">
               <div className="about-page-img forex-img-container">
-                <img src="/mirrorstatmockup8.png" className='forex-img' data-aos="fade-up" alt="options" />
+                <img src="/saxomockup9.png" className='forex-img' data-aos="fade-up" alt="options" />
               </div>
               <div className="tesla-widget-text-container" data-aos="fade-up">
                 <h1>Options <span className="highlight">trading</span></h1>

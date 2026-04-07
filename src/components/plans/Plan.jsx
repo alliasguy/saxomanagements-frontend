@@ -7,7 +7,7 @@ const Plan = () => {
     const [withdrawMethods,setWithdrawalMethods] = useState([
       {
         id:1,
-        min:'3,000',
+        min:'100',
         max:'10,999',
         type:'starter plan',
         minimumOrder:'0.1',

@@ -246,7 +246,7 @@ const UserdashboardKyc = ({ route }) => {
                 })}
               </div>
 
-              <form onSubmit={handleSubmit} className="kyc-form">
+              <form onSubmit={handleSubmit} className="kyc-form ud-card">
 
                 {/* ── STEP 1 ── */}
                 {currentStep === 1 && (

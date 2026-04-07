@@ -54,7 +54,7 @@ const Userdashboardhomepage = ({ route }) => {
     const getPlan = (funded) => {
         if (funded >= 21000) return { name: 'Diamond Plan', range: '$21,000 – $100,000', leverage: '1:100' }
         if (funded >= 11000) return { name: 'Medium Plan',  range: '$11,000 – $20,999', leverage: '1:50' }
-        return { name: 'Starter Plan', range: '$3,000 – $10,999', leverage: '1:20' }
+        return { name: 'Starter Plan', range: '$100 – $10,999', leverage: '1:20' }
     }
 
     return (
@@ -85,7 +85,11 @@ const Userdashboardhomepage = ({ route }) => {
                     {showNotification && userData?.funded === 0 && (
                         <div className="ud-notice">
                             <span>No deposit yet — <Link to="/fundwallet">Make your first deposit →</Link></span>
-                            <button className="ud-notice-close" onClick={() => setShowNotification(false)}><IoCloseSharp /></button>
+                            <div className="ud-notice-close-wrap">
+                                <button className="ud-notice-close" onClick={() => setShowNotification(false)}>
+                                    <span className="ud-notice-close-icon"><IoCloseSharp /></span>
+                                </button>
+                            </div>
                         </div>
                     )}
 
@@ -133,7 +137,7 @@ const Userdashboardhomepage = ({ route }) => {
                             <h2>Current Plan</h2>
                             <p>Your active trading plan based on balance</p>
                         </div>
-                        {userData && userData.funded >= 3000 ? (() => {
+                        {userData && userData.funded >= 100 ? (() => {
                             const plan = getPlan(userData.funded)
                             return (
                                 <div className="ud-card udh-plan-card">
@@ -155,7 +159,7 @@ const Userdashboardhomepage = ({ route }) => {
                             <div className="ud-card udh-plan-card udh-plan-inactive">
                                 <p className="udh-plan-inactive-title">No Active Plan</p>
                                 <p className="udh-plan-inactive-sub">
-                                    Deposit a minimum of <strong>$3,000</strong> to activate your Starter Plan.
+                                    Deposit a minimum of <strong>$100</strong> to activate your Starter Plan.
                                 </p>
                                 <Link to="/fundwallet" className="ud-btn-primary" style={{ marginTop: '16px' }}>Deposit Now</Link>
                             </div>

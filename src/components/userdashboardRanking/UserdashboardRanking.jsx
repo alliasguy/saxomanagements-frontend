@@ -7,13 +7,13 @@ import Loader from '../Loader'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 
 const PLANS = [
-  { id: 1, name: 'Starter Plan',  min: 3000,  max: 10999,  minLabel: '$3,000',  maxLabel: '$10,999',  minOrder: '0.1 lots', maxOrder: '10 lots',  leverage: '1:20' },
+  { id: 1, name: 'Starter Plan',  min: 100,   max: 10999,  minLabel: '$100',    maxLabel: '$10,999',  minOrder: '0.1 lots', maxOrder: '10 lots',  leverage: '1:20' },
   { id: 2, name: 'Medium Plan',   min: 11000, max: 20999,  minLabel: '$11,000', maxLabel: '$20,999',  minOrder: '0.1 lots', maxOrder: '15 lots',  leverage: '1:50',  featured: true },
   { id: 3, name: 'Diamond Plan',  min: 21000, max: 100000, minLabel: '$21,000', maxLabel: '$100,000', minOrder: '0.1 lots', maxOrder: '25 lots',  leverage: '1:100' },
 ]
 
 const getCurrentPlan = (funded) => {
-  if (!funded || funded < 3000) return null
+  if (!funded || funded < 100) return null
   if (funded >= 21000) return PLANS[2]
   if (funded >= 11000) return PLANS[1]
   return PLANS[0]
@@ -110,7 +110,7 @@ const UserdashboardRanking = ({ route }) => {
               <div className="ud-card no-plan-card" style={{marginBottom:'28px'}}>
                 <div className="no-plan-icon">—</div>
                 <h3>No Active Plan</h3>
-                <p>You need a minimum deposit of <strong>$3,000</strong> to activate the Starter Plan and begin copy trading.</p>
+                <p>You need a minimum deposit of <strong>$100</strong> to activate the Starter Plan and begin copy trading.</p>
                 <button className="plan-upgrade-btn" onClick={() => navigate('/fundwallet')}>
                   Fund your account
                 </button>

@@ -11,7 +11,7 @@ const Why = () => {
               <div className="videoframe-text-container" data-aos="fade-up">
                     <h1>Market  <span className="highlight">rates</span></h1>
                 </div>
-              <img src="/mirrorstatmockup4.png" alt="" className="mockup" data-aos="fade-up"/>
+              <img src="/saxomockup4.png" alt="" className="mockup" data-aos="fade-up"/>
           </div>
         
           <div className="why-choose-us-card-container">

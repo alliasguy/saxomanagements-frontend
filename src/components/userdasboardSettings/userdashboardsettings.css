@@ -47,5 +47,5 @@
 /* ─── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 600px) {
   .uds-form-grid { grid-template-columns: 1fr; }
-  .uds-tabs { flex-direction: column; }
+  .uds-tab { flex: unset; width: 100%; }
 }

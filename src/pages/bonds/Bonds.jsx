@@ -21,7 +21,7 @@ const Bonds = () => {
           <div className='about-section copy-trade-section'>
             <div className="about-wrapper copy-trade-wrapper about-copy-trade-section forex-copy-trade-section">
               <div className="about-page-img forex-img-container">
-                <img src="/mirrorstatmockup9.png" className='forex-img' data-aos="fade-up" alt="bonds" />
+                <img src="/saxomockup1.png" className='forex-img' data-aos="fade-up" alt="bonds" />
               </div>
               <div className="tesla-widget-text-container" data-aos="fade-up">
                 <h1>Bonds <span className="highlight">trading</span></h1>
