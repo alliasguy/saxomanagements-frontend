@@ -131,7 +131,7 @@ useEffect(() => {
 
      const userData = {
             service_id: 'service_yqknanp',
-            template_id: 'template_vd5j2eh',
+       template_id: 'template_0gkkear',
             user_id: '0wcKB0jFnO7iPqwgZ',
             template_params: {
               'name': `${result.name}`,
