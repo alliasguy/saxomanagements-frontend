@@ -285,6 +285,7 @@ const Admindashboard = ({ route }) => {
   const [selectedValue, setSelectedValue] = useState()
   const [showStatus, setShowStatus] = useState(false)
   const [debitModal, setDebitModal] = useState(false)
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 })
 
   // New state for individual allocations
   const [copyTraders, setCopyTraders] = useState([])
@@ -1190,14 +1191,25 @@ const Admindashboard = ({ route }) => {
                                   className="adm-menu-btn"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    setActiveActionMenu(activeActionMenu === refer.email ? null : refer.email);
+                                    if (activeActionMenu === refer.email) {
+                                      setActiveActionMenu(null);
+                                    } else {
+                                      const rect = e.currentTarget.getBoundingClientRect();
+                                      const dropdownHeight = 420;
+                                      const spaceBelow = window.innerHeight - rect.bottom;
+                                      const top = spaceBelow < dropdownHeight
+                                        ? Math.max(10, rect.top - dropdownHeight - 6)
+                                        : rect.bottom + 6;
+                                      setDropdownPos({ top, right: window.innerWidth - rect.right });
+                                      setActiveActionMenu(refer.email);
+                                    }
                                   }}
                                 >
                                   <FaEllipsisH size={13} />
                                 </button>
 
                                 {activeActionMenu === refer.email && (
-                                  <div className="adm-dropdown">
+                                  <div className="adm-dropdown" style={{ top: dropdownPos.top, right: dropdownPos.right }}>
                                     <button className="adm-dropdown-item" onClick={() => {
                                       setSelectedUser(refer)
                                       setShowUserDetailsModal(true)
