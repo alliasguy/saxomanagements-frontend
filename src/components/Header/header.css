@@ -29,14 +29,15 @@ header {
     width: auto;
     margin-left: 0;
     height: 100%;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
 }
 
 .header-logo {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
+    height: 100%;
+    width: 180px;
+    object-fit: cover;
     display: block;
+    margin-left: -18px;
 }
 
 .txtlogo {

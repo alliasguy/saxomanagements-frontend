@@ -788,16 +788,18 @@ button {
 .login-logo {
     width: 90%;
     object-fit: cover;
-    height: 100px;
+    height: 90%;
 }
 
 .login-logo-img {
-    height: 56px;
+    height: 120px;
     width: auto;
-    object-fit: contain;
-    display: block;
+    object-fit: cover;
+    display: flex;
     cursor: pointer;
     margin-bottom: 4px;
+    align-items: center;
+    justify-content: center;
 }
 
 .submit {
