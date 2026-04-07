@@ -1,0 +1,135 @@
+/* ─── WRAP ───────────────────────────────────────────── */
+.wdr-wrap { max-width: 520px; }
+
+/* ─── BACK BUTTON ────────────────────────────────────── */
+.wdr-back-btn { height: 36px; padding: 0 14px; font-size: 0.8rem; }
+
+/* ─── STEP INDICATOR ─────────────────────────────────── */
+.wdr-steps {
+  display: flex; align-items: center;
+  margin-bottom: 28px;
+}
+.wdr-step {
+  display: flex; align-items: center; gap: 8px;
+}
+.wdr-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.wdr-step.active .wdr-step-num {
+  background: rgba(37,172,208,0.15);
+  border-color: rgba(37,172,208,0.4);
+  color: rgb(37,172,208);
+}
+.wdr-step.done .wdr-step-num {
+  background: rgba(72,199,130,0.12);
+  border-color: rgba(72,199,130,0.35);
+  color: rgb(72,199,130);
+  font-size: 0.85rem;
+}
+.wdr-step-label {
+  font-size: 0.78rem; font-weight: 600;
+  color: rgba(255,255,255,0.3); white-space: nowrap;
+}
+.wdr-step.active .wdr-step-label,
+.wdr-step.done  .wdr-step-label { color: rgba(255,255,255,0.75); }
+.wdr-step-line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 12px;
+}
+
+/* ─── PREVIEW CARD ───────────────────────────────────── */
+.wdr-card { display: flex; flex-direction: column; gap: 0; }
+
+.wdr-method-row {
+  display: flex; align-items: center; gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+.wdr-coin-img {
+  width: 52px; height: 52px; border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.wdr-method-name { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 3px; }
+.wdr-method-sub  { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+/* ─── DETAIL ROWS ────────────────────────────────────── */
+.wdr-details { display: flex; flex-direction: column; margin-bottom: 24px; }
+
+.wdr-detail-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.84rem;
+}
+.wdr-detail-row:last-child { border-bottom: none; }
+.wdr-detail-row span     { color: rgba(255,255,255,0.45); }
+.wdr-detail-row strong   { color: white; font-weight: 600; }
+.wdr-green  { color: rgb(72,199,130) !important; }
+.wdr-accent { color: rgb(37,172,208) !important; }
+
+.wdr-detail-total {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px; margin-top: 4px;
+}
+.wdr-detail-total span   { color: rgba(255,255,255,0.7); font-weight: 600; }
+.wdr-detail-total strong { font-size: 1rem; }
+
+.wdr-proceed-btn {
+  width: 100%; justify-content: center; height: 48px; font-size: 0.92rem;
+}
+
+/* ─── SUMMARY STRIP ──────────────────────────────────── */
+.wdr-summary-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap; gap: 12px;
+}
+.wdr-summary-item {
+  display: flex; flex-direction: column; gap: 4px; text-align: center;
+}
+.wdr-summary-item span   { font-size: 0.68rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.8px; }
+.wdr-summary-item strong { font-size: 0.88rem; font-weight: 700; color: white; }
+.wdr-summary-divider {
+  width: 1px; height: 32px;
+  background: rgba(255,255,255,0.07);
+}
+
+/* ─── SUBMIT FORM ────────────────────────────────────── */
+.wdr-form { display: flex; flex-direction: column; gap: 0; }
+
+.wdr-wallet-input { font-family: 'Courier New', monospace; font-size: 0.85rem; }
+
+.wdr-wallet-hint {
+  font-size: 0.75rem;
+  color: rgba(255,180,0,0.6);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.wdr-submit-btn {
+  width: 100%; justify-content: center;
+  height: 48px; font-size: 0.92rem;
+  margin-top: 8px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .wdr-steps { flex-wrap: wrap; gap: 8px; }
+  .wdr-step-line { display: none; }
+  .wdr-summary-strip { justify-content: flex-start; }
+  .wdr-summary-divider { display: none; }
+}

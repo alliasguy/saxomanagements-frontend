@@ -1,312 +1,210 @@
 import React from 'react'
 import './userdashboardhomepage.css'
-import { FaUserAlt,FaAngleDown } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
-import { useState,useEffect,useRef } from 'react'
-import { IoMdNotifications } from "react-icons/io";
+import { useState, useEffect, useRef } from 'react'
+import { IoMdNotifications } from "react-icons/io"
+import { FaUserAlt } from "react-icons/fa"
+import { IoCloseSharp } from "react-icons/io5"
+import { RiLuggageDepositLine } from "react-icons/ri"
+import { BiMoneyWithdraw } from "react-icons/bi"
+import { MdCandlestickChart } from "react-icons/md"
 import Loader from '../Loader'
-import { IoCloseSharp } from "react-icons/io5";
-import { RiLuggageDepositLine } from "react-icons/ri";
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
-import { BiMoneyWithdraw } from "react-icons/bi";
 import TeslaWidget from '../TeslaWidget'
-import MobileDropdown from '../MobileDropdown';
 
-const Userdashboardhomepage = ({route}) => {
+const Userdashboardhomepage = ({ route }) => {
     const navigate = useNavigate()
     const [userData, setUserData] = useState()
-  const [loader, setLoader] = useState(false)
-  const [showNotification, setShowNotification] = useState(true)
-  const [showMobileDropdown, setShowMobileDropdown] = useState(false)
-  const [dailyTrades, setDailyTrades] = useState([])
-    const copy = ()=>{
-        navigator.clipboard.writeText(clipRef.current.value)
-    }
-  const clipRef = useRef(null)
-  const today = new Date().toLocaleDateString()
-  
+    const [loader, setLoader] = useState(false)
+    const [showNotification, setShowNotification] = useState(true)
+    const [dailyTrades, setDailyTrades] = useState([])
+    const today = new Date().toLocaleDateString()
 
-   useEffect(() => {
-  const getData = async () => {
-    try {
-      setLoader(true);
-
-      // Check if a token exists
-        const token = localStorage.getItem('token');
-        console.log(token)
-      if (!token) {
-        navigate('/login');
-        return;
-      }
-
-      // Fetch user data from the API
-      const response = await fetch(`${route}/api/getData`, {
-        headers: {
-          'x-access-token': token,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      // Parse the response
-      const data = await response.json();
-
-      // Handle errors from the API
-      if (data.status === 'error') {
-        localStorage.removeItem('token'); // Clear invalid token
-        navigate('/login');
-      } else {
-        setUserData(data); // Set user data
-      }
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      navigate('/login'); // Navigate to login on failure
-    } finally {
-      setLoader(false); // Stop loader
-    }
-  };
-
-  getData();
-   }, [navigate, route]);
-  
-  const closeMobileMenu = () => {
-    setShowMobileDropdown(false)
-  }
-
-  useEffect(() => {
-      // Run this only when both traders and userData.trader are ready
-    if (userData?.trades.length > 0 && userData) {
-        
-        const dailytrades = userData.trades.filter(trade => trade.date === today)
-  
-        console.log("daily trades:", dailytrades);
-        setDailyTrades(dailytrades);
-      }
-    }, [userData]);
-  
-
-  
-
-  
-    
-  return (
-    <main className='homewrapper'>
-      {
-        loader &&
-          <Loader />
-      }
-    <Userdashboardheader />
-      <section className='dashboardhomepage'>
-        
-        <div className="dashboardheaderwrapper">
-          <div className="header-notification-icon-container">
-            {
-              showNotification && userData && userData.funded === 0 &&
-              <span className="notification-counter">1</span>
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                setLoader(true)
+                const token = localStorage.getItem('token')
+                if (!token) { navigate('/login'); return }
+                const response = await fetch(`${route}/api/getData`, {
+                    headers: { 'x-access-token': token, 'Content-Type': 'application/json' },
+                })
+                const data = await response.json()
+                if (data.status === 'error') {
+                    localStorage.removeItem('token')
+                    navigate('/login')
+                } else {
+                    setUserData(data)
+                }
+            } catch (error) {
+                navigate('/login')
+            } finally {
+                setLoader(false)
             }
-              <IoMdNotifications />
-          </div>
-          <div className="header-username-container">
-            <h3>Hi, {userData ? userData.firstname : ''}</h3>
-          </div>
-          <div className="header-userprofile-container">
-            <div className="user-p-icon-container">
-              <FaUserAlt/>
-            </div>
-            <div className="user-p-drop-icon" onClick={() => { setShowMobileDropdown(!showMobileDropdown); }
-             }>
-              <FaAngleDown />
-            </div>
-            
-          </div>
-        </div>
-        {
-          userData && showNotification && userData.funded === 0 ? 
-            <div className="notification-dashoboard-container">
-              <div className="notification-card">
-                <p>you have not deposited yet click <Link to='/fundwallet'>Here</Link> to make your first deposit</p>
-                <div className="close-notification-container" onClick={()=> setShowNotification(false)}>
-                    <IoCloseSharp />
-                </div>
-              </div>
-            </div>
-            : ''
         }
-        
-        <div className="dashboard-overview-container">
-          <MobileDropdown showStatus={showMobileDropdown} route={route} closeMenu={closeMobileMenu} />
-          <div className="upper-overview-card">
-            <div className="total-balance-container">
-              <h2 className="main-balance">
-                Total Balance
-              </h2>
-              <div className="amount">
-                <h3>${userData ? userData.funded : '0'}.00</h3>
-                <span className="usd-btn">usd</span>
-              </div>
-            </div>
-            <div className="overview-btn-container">
-              <div className="deposit-btn-container">
-                <Link to='/fundwallet' className='user-deposit-btn'>
-                  <span>deposit</span>
-                </Link>
-                <Link to='/withdraw' className='user-deposit-btn'>
-                  <span>withdraw</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="lower-overview-card-container">
-            <div className="lower-overview-card">
-              <div className="lower-card-icon-container">
-                <RiLuggageDepositLine />
-              </div>
-              <div className="lower-card-text-container">
-                <h3>total deposit</h3>
-                <p>${userData ? userData.totaldeposit : '0'}.00</p>
-              </div>
-            </div>
-            <div className="lower-overview-card">
-              <div className="lower-card-icon-container">
-                  <BiMoneyWithdraw />
-              </div>
-              <div className="lower-card-text-container">
-                <h3>total withdrawal</h3>
-                <p>${userData ? userData.totalwithdraw : '0'}.00</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="dashboard-chart-container">
-          <TeslaWidget />
-        </div>
-        {/* <div className="referral-section">
-                <div className="referral-card1">
-                    <div className="referraltext-wrapper">
-                        <div className="referral-text-container">
-                            <h2>refer us and earn 10% of every downline deposit</h2>
-                            <p>Use the bellow link to invite your friends.</p>
-                        </div>
-                        <button className="invite-btn">invite</button>
-                    </div>
-                    <div className="click-to-copy-container">
-                        <span className='clipboard-btn'>
-                            <FiLink />
-                        </span>
-                        <input type="text" value={userData ? `www.apexcopytrade.com/user/${userData.username ? userData.username : userData.referral}` : ''} ref={clipRef}/>
-                        <span className={`clipboard-btn ${clipBoard ? <MdOutlineDone /> : ''}` } onClick={()=>{
-                            copy()
-                            setClipBoard(!clipBoard)
-                              }}>   
-                            {
-                                clipBoard ?
-                                <MdOutlineDone /> : <MdOutlineContentCopy />
-                            }
-                        </span>
-                    </div>  
-                </div>
-                <div className="referral-card1">
-                    <div className="referraltext-wrapper">
-                        <div className="referral-text-container">
-                            <h2>my referral</h2>
-                        </div>
-                        <div className="referral-text-container small-card">
-                            <h2>{userData ? userData.referred.length : '      '}</h2>
-                            <p>referred users</p>
-                        </div>
-                        <div className="referral-text-container small-card">
-                            <h2>{userData ? userData.refBonus : '        '} USD</h2>
-                            <p>referral commission</p>
-                        </div>
+        getData()
+    }, [navigate, route])
 
+    useEffect(() => {
+        if (userData?.trades?.length > 0) {
+            setDailyTrades(userData.trades.filter(t => t.date === today))
+        }
+    }, [userData])
+
+    const getPlan = (funded) => {
+        if (funded >= 21000) return { name: 'Diamond Plan', range: '$21,000 – $100,000', leverage: '1:100' }
+        if (funded >= 11000) return { name: 'Medium Plan',  range: '$11,000 – $20,999', leverage: '1:50' }
+        return { name: 'Starter Plan', range: '$3,000 – $10,999', leverage: '1:20' }
+    }
+
+    return (
+        <div className="ud-layout">
+            {loader && <Loader />}
+            <Userdashboardheader route={route} />
+
+            <div className="ud-main">
+                {/* TOPBAR */}
+                <header className="ud-topbar">
+                    <div className="ud-topbar-left">
+                        <p className="ud-greeting">
+                            Hi, <span>{userData?.firstname || '—'}</span>
+                        </p>
                     </div>
-                    <img src="/bar4.png" alt="" className="bar4" />
+                    <div className="ud-topbar-right">
+                        <div className="ud-notif-btn">
+                            <IoMdNotifications />
+                            {showNotification && userData?.funded === 0 && <span className="ud-notif-dot" />}
+                        </div>
+                        <div className="ud-user-avatar"><FaUserAlt size={14} /></div>
+                    </div>
+                </header>
+
+                {/* CONTENT */}
+                <div className="ud-content">
+                    {/* Deposit nudge */}
+                    {showNotification && userData?.funded === 0 && (
+                        <div className="ud-notice">
+                            <span>No deposit yet — <Link to="/fundwallet">Make your first deposit →</Link></span>
+                            <button className="ud-notice-close" onClick={() => setShowNotification(false)}><IoCloseSharp /></button>
+                        </div>
+                    )}
+
+                    {/* ── BALANCE HERO ── */}
+                    <div className="udh-hero">
+                        <div className="udh-balance-block">
+                            <p className="udh-balance-label">Total Balance</p>
+                            <div className="udh-balance-amount">
+                                <span className="udh-amount-value">${userData?.funded?.toLocaleString() || '0'}</span>
+                                <span className="udh-currency-tag">USD</span>
+                            </div>
+                        </div>
+                        <div className="udh-action-row">
+                            <Link to="/fundwallet" className="ud-btn-primary">Deposit</Link>
+                            <Link to="/withdraw"   className="ud-btn-ghost">Withdraw</Link>
+                        </div>
+                    </div>
+
+                    {/* ── STATS ROW ── */}
+                    <div className="udh-stats-row">
+                        <div className="ud-card udh-stat-card">
+                            <div className="udh-stat-icon deposit-icon"><RiLuggageDepositLine /></div>
+                            <div>
+                                <p className="udh-stat-label">Total Deposit</p>
+                                <p className="udh-stat-value">${userData?.totaldeposit?.toLocaleString() || '0'}</p>
+                            </div>
+                        </div>
+                        <div className="ud-card udh-stat-card">
+                            <div className="udh-stat-icon withdraw-icon"><BiMoneyWithdraw /></div>
+                            <div>
+                                <p className="udh-stat-label">Total Withdrawal</p>
+                                <p className="udh-stat-value">${userData?.totalwithdraw?.toLocaleString() || '0'}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── CHART ── */}
+                    <div className="ud-card udh-chart-card">
+                        <TeslaWidget />
+                    </div>
+
+                    {/* ── CURRENT PLAN ── */}
+                    <div className="udh-plan-section">
+                        <div className="ud-section-header">
+                            <h2>Current Plan</h2>
+                            <p>Your active trading plan based on balance</p>
+                        </div>
+                        {userData && userData.funded >= 3000 ? (() => {
+                            const plan = getPlan(userData.funded)
+                            return (
+                                <div className="ud-card udh-plan-card">
+                                    <div className="udh-plan-badge"><MdCandlestickChart /> Active</div>
+                                    <h3 className="udh-plan-name">{plan.name}</h3>
+                                    <div className="udh-plan-stats">
+                                        <div className="udh-plan-stat">
+                                            <span className="udh-plan-stat-label">Capital Range</span>
+                                            <span className="udh-plan-stat-value">{plan.range}</span>
+                                        </div>
+                                        <div className="udh-plan-stat">
+                                            <span className="udh-plan-stat-label">Leverage</span>
+                                            <span className="udh-plan-stat-value">{plan.leverage}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })() : (
+                            <div className="ud-card udh-plan-card udh-plan-inactive">
+                                <p className="udh-plan-inactive-title">No Active Plan</p>
+                                <p className="udh-plan-inactive-sub">
+                                    Deposit a minimum of <strong>$3,000</strong> to activate your Starter Plan.
+                                </p>
+                                <Link to="/fundwallet" className="ud-btn-primary" style={{ marginTop: '16px' }}>Deposit Now</Link>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* ── DAILY TRADES ── */}
+                    <div className="udh-trades-section">
+                        <div className="ud-section-header">
+                            <h2>Today's Trades</h2>
+                            <p>{today}</p>
+                        </div>
+                        {dailyTrades.length > 0 ? (
+                            <div className="ud-table-wrap">
+                                <table className="ud-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Pair</th>
+                                            <th>Amount</th>
+                                            <th>Type</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {dailyTrades.map((trade, i) => (
+                                            <tr key={i}>
+                                                <td>{trade.pair}</td>
+                                                <td>${trade.amount} USD</td>
+                                                <td>
+                                                    <span className={`ud-badge ${trade.tradeType === 'profit' ? 'ud-badge-profit' : 'ud-badge-loss'}`}>
+                                                        {trade.tradeType}
+                                                    </span>
+                                                </td>
+                                                <td>{trade.date}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : (
+                            <div className="ud-empty">
+                                <p>Your trader has not placed any trades today. Check back later.</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div> */}
-        <div className="current-rank-section">
-          <div className="active-trader-container">
-          <div className="videoframe-text-container treader-header">
-          <h1>Your current <span className="highlight">Plan</span></h1>
             </div>
-            {userData && userData.funded >= 3000 ? (
-              <div className="traders-card active-trader-card">
-                <div className="trader-card-header">
-                  <div className="trader-card-text-container">
-                    <h3 className="trader-name">
-                      {userData.funded >= 21000 ? 'Diamond Plan' : userData.funded >= 11000 ? 'Medium Plan' : 'Starter Plan'}
-                    </h3>
-                    <p className="trader-description">Active Plan</p>
-                  </div>
-                </div>
-                <div className="trader-perfomance-container">
-                  <div className="trader-performance">
-                    <div className="trader-performance-item">
-                      <p className="performance-label">Capital Range</p>
-                      <p className="performance-value my-value">
-                        {userData.funded >= 21000 ? '$21,000 – $100,000' : userData.funded >= 11000 ? '$11,000 – $20,999' : '$3,000 – $10,999'}
-                      </p>
-                    </div>
-                    <div className="trader-performance-item">
-                      <p className="performance-label">Leverage</p>
-                      <p className="performance-value my-value">
-                        {userData.funded >= 21000 ? '1:100' : userData.funded >= 11000 ? '1:50' : '1:20'}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="traders-card active-trader-card" style={{padding:'24px', textAlign:'left'}}>
-                <h3 style={{color:'rgba(255,255,255,0.6)', fontFamily:'Poppins', fontWeight:500, fontSize:'0.95rem'}}>No active plan</h3>
-                <p style={{color:'rgba(255,255,255,0.35)', fontFamily:'Poppins', fontSize:'0.82rem', marginTop:'6px', lineHeight:'1.6'}}>
-                  Deposit a minimum of <strong style={{color:'white'}}>$3,000</strong> to activate your Starter Plan.
-                </p>
-              </div>
-            )}
-          </div>
         </div>
-        {userData && dailyTrades.length !== 0 ? 
-          <div className="page-swiper-wrapper trans-page">
-          <div className="page-header">
-              <h3>checkout your Daily trade logs</h3>
-              <h2>Daily trade logs</h2>
-              <p>we keep track of all the trades taken by your trader daily</p>
-          </div>
-          <div className="transaction-container no-ref">
-            <table>
-                <thead>
-                  <tr>
-                    <td>trade pair</td>
-                    <td>amount</td>
-                    <td>type</td>
-                    <td>date</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    dailyTrades.map(refer =>
-                      <tr className='tr'>
-                        <td>{refer.pair}</td>
-                        <td>$ {refer.amount} USD</td>
-                        <td className={`${refer.tradeType === 'profit' ? 'profit' : 'loss'}`}> {refer.tradeType}</td>
-                        <td>{refer.date}</td>
-                      </tr>
-                    )
-                  }
-                </tbody>
-              </table>
-              </div>
-            </div>
-          :
-            <div className="empty-page home-empty-page">
-              <img src="/preview.gif" alt="" className='empty-img dash-empty-img'/>
-              <p>Your Trader has not placed any trades for your account Today. Trades taken by your trader  today would be displayed here when available.</p> 
-            </div>
-      }
-    </section>
-    </main>
-  )
+    )
 }
 
 export default Userdashboardhomepage
-

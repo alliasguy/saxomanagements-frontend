@@ -1,0 +1,195 @@
+/* ─── CHECKOUT WRAP ──────────────────────────────────── */
+.chk-wrap { max-width: 520px; }
+
+/* ─── BACK BUTTON ────────────────────────────────────── */
+.chk-back-btn {
+  height: 36px; padding: 0 14px;
+  font-size: 0.8rem;
+}
+
+/* ─── STEP INDICATOR ─────────────────────────────────── */
+.chk-steps {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 28px;
+}
+
+.chk-step {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.chk-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
+.chk-step.active .chk-step-num {
+  background: rgba(37,172,208,0.15);
+  border-color: rgba(37,172,208,0.4);
+  color: rgb(37,172,208);
+}
+
+.chk-step-label {
+  font-size: 0.78rem; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+.chk-step.active .chk-step-label { color: rgba(255,255,255,0.8); }
+
+.chk-step-line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 12px;
+}
+
+/* ─── PREVIEW CARD ───────────────────────────────────── */
+.chk-card { display: flex; flex-direction: column; gap: 0; }
+
+.chk-method-header {
+  display: flex; align-items: center; gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+.chk-coin-img {
+  width: 52px; height: 52px; border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.chk-method-name {
+  font-size: 1rem; font-weight: 700; color: white; margin-bottom: 3px;
+}
+.chk-method-sub {
+  font-size: 0.78rem; color: rgba(255,255,255,0.3);
+}
+
+/* ─── DETAIL ROWS ────────────────────────────────────── */
+.chk-details {
+  display: flex; flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.chk-detail-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.84rem;
+}
+.chk-detail-row span { color: rgba(255,255,255,0.45); }
+.chk-detail-row strong { color: white; font-weight: 600; }
+.chk-green { color: rgb(72,199,130) !important; }
+
+.chk-detail-total {
+  border-bottom: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px; margin-top: 4px;
+}
+.chk-detail-total span { color: rgba(255,255,255,0.7); font-weight: 600; }
+.chk-detail-total strong { font-size: 1rem; color: white; }
+
+.chk-proceed-btn {
+  width: 100%; justify-content: center; height: 48px; font-size: 0.92rem;
+}
+
+/* ─── DEPOSIT ADDRESS (Deposit.jsx renders inside here) ── */
+.dep-wrap { max-width: 520px; }
+
+.dep-address-card { display: flex; flex-direction: column; gap: 20px; }
+
+.dep-amount-notice {
+  background: rgba(37,172,208,0.07);
+  border: 1px solid rgba(37,172,208,0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.85rem; color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+.dep-amount-notice strong { color: white; }
+
+.dep-address-label {
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.dep-copy-row {
+  display: flex; gap: 10px; align-items: center;
+  flex-wrap: wrap;
+}
+.dep-address-input {
+  flex: 1; min-width: 0; height: 48px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 0 14px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.78rem;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dep-copy-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 48px; padding: 0 18px; flex-shrink: 0;
+  background: rgba(37,172,208,0.1);
+  border: 1px solid rgba(37,172,208,0.25);
+  border-radius: 10px; color: rgb(37,172,208);
+  font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.dep-copy-btn:hover { background: rgba(37,172,208,0.18); }
+.dep-copied { color: rgb(72,199,130); border-color: rgba(72,199,130,0.3); background: rgba(72,199,130,0.08); }
+
+/* ─── PROOF UPLOAD ───────────────────────────────────── */
+.dep-proof-section { display: flex; flex-direction: column; gap: 14px; }
+
+.dep-proof-preview {
+  width: 100%; min-height: 140px; border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 2px dashed rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+.dep-proof-preview img { width: 100%; height: 100%; object-fit: cover; }
+.dep-proof-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  color: rgba(255,255,255,0.2); font-size: 2rem;
+}
+.dep-proof-placeholder span {
+  font-size: 0.78rem; font-weight: 600;
+  color: rgba(255,255,255,0.2);
+}
+
+.dep-upload-label {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 46px; width: 100%; border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55); font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.dep-upload-label:hover {
+  background: rgba(255,255,255,0.07); color: white;
+}
+
+.dep-uploading-badge {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 0.82rem; color: rgba(37,172,208,0.7); padding: 6px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .dep-copy-row { flex-direction: column; align-items: stretch; }
+  .dep-address-input { width: 100%; }
+  .dep-copy-btn { width: 100%; justify-content: center; }
+  .chk-steps { flex-wrap: wrap; gap: 8px; }
+  .chk-step-line { display: none; }
+}

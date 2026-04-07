@@ -1,241 +1,142 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {FiArrowRight} from 'react-icons/fi'
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import {AiOutlineArrowLeft} from 'react-icons/ai'
-import {MdClose} from 'react-icons/md'
-import Swal from 'sweetalert2';
-import WithdrawReview from '../WithdrawReview';
-import { Pagination, Navigation ,FreeMode} from "swiper";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/free-mode";
-import { motion,AnimatePresence } from 'framer-motion'
-// import { Pagination, Navigation ,FreeMode} from "swiper";
-import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Loader from '../Loader';
-const Userdashboardwithdraw = ({route}) => {
-  const [loader,setLoader] = useState(false)
+import React, { useState, useEffect } from 'react'
+import './userdashboardwithdraw.css'
+import { useNavigate } from 'react-router-dom'
+import { MdClose } from 'react-icons/md'
+import { FiArrowRight, FiChevronRight } from 'react-icons/fi'
+import { IoMdNotifications } from 'react-icons/io'
+import { FaUserAlt } from 'react-icons/fa'
+import Swal from 'sweetalert2'
+import Loader from '../Loader'
+import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
+import WithdrawReview from '../WithdrawReview'
+
+const withdrawMethods = [
+  { id:1, image:'/btc.png',     method:'BTC',            min:1 },
+  { id:2, image:'/etherium.png',method:'ETH',            min:10 },
+  { id:3, image:'/tron.png',    method:'Tether (TRC-20)',min:1 },
+  { id:4, image:'/solana.png',  method:'Solana (SOL)',   min:1 },
+]
+
+const Toast = Swal.mixin({ toast:true, position:'top-end', showConfirmButton:false, timer:3000, timerProgressBar:true })
+
+const Userdashboardwithdraw = ({ route }) => {
   const navigate = useNavigate()
+  const [loader, setLoader] = useState(false)
   const [userData, setUserData] = useState()
-  useEffect(()=>{
+  const [selectedCrypto, setSelectedCrypto] = useState(null)
+  const [withdrawAmount, setWithdrawAmount] = useState('')
+  const [showModal, setShowModal] = useState(false)
+  const [activeMethod, setActiveMethod] = useState(null)
+  const [checkoutPage, setCheckoutPage] = useState(false)
+
+  useEffect(() => {
     setLoader(true)
-    if(localStorage.getItem('token')){
-        const getData = async()=>{
-            const req = await fetch(`${route}/api/getData`,{
-                headers: {
-                'x-access-token': localStorage.getItem('token')
-                }
-            })
-            const res = await req.json()
-          setUserData(res)
-           if (res.status === 'error') {
-                    navigate('/login')
-                }
-            setLoader(false)
-        }
-        getData()
-    }
-    else{
-        navigate('/login')
-    }
-      
-},[])
-  const [showModal,setShowModal] =useState(false)
-  const [activeMethod, setActiveMethod] = useState()
-  const [checkoutPage,setCheckoutPage] = useState(false)
-  const [withdrawAmount,setWithdrawAmount] = useState()
-  const withdrawMethods = [
-    {
-      id:1,
-      min:1,
-      max:1000000,
-      image:'/btc.png',
-      method:'BTC',
-    },
-    {
-      id:2,
-      min:10,
-      max:1000000,
-      image:'/etherium.png',
-      method:'ETH',
-    },
-    {
-      id:3,
-      min:1,
-      max:1000000,
-      image:'/tron.png',
-      method:'tether(TRC20)',
-    },
-    {
-      id:4,
-      min:1,
-      max:1000000,
-      image:'/solana.png',
-      method:'Solana (SOL) ',
-    },
-    
-  ]
-
-    // sweet alert codes 
-
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    if (localStorage.getItem('token')) {
+      const getData = async () => {
+        const req = await fetch(`${route}/api/getData`, {
+          headers: { 'x-access-token': localStorage.getItem('token') }
+        })
+        const res = await req.json()
+        setUserData(res)
+        if (res.status === 'error') navigate('/login')
+        setLoader(false)
       }
-    })
-
-    const close = ()=>{
-      setCheckoutPage(false)
+      getData()
+    } else {
+      navigate('/login')
     }
-    
-  
-   const [selectedCrypto, setSelectedCrypto] = useState(null);
-  
-    const handleChange = (e) => {
-      const selectedMethod = e.target.value;
-      const methodDetails = withdrawMethods.find(opt => opt.method === selectedMethod);
-      setSelectedCrypto(methodDetails);
-  };
-  
+  }, [])
+
+  const handleSelectMethod = (method) => {
+    setSelectedCrypto(withdrawMethods.find(o => o.method === method) || null)
+  }
+
+  const handleNext = () => {
+    const amt = parseInt(withdrawAmount)
+    if (isNaN(amt)) return Toast.fire({ icon:'warning', title:'Amount must be a number' })
+    if (amt < activeMethod.min) return Toast.fire({ icon:'warning', title:`Minimum withdrawal is $${activeMethod.min}` })
+    setCheckoutPage(true)
+  }
+
+  if (checkoutPage) {
+    return <WithdrawReview Active={activeMethod} withdrawAmount={parseInt(withdrawAmount)} closepage={() => setCheckoutPage(false)} route={route} funded={userData?.funded} />
+  }
+
   return (
-    <>
-      {
-        loader && 
-          <Loader />
-      }
-    {
-      !checkoutPage &&
-      <div>
-          {
-            showModal &&
-          <AnimatePresence 
-            initial={{y:45, opacity:0}}
-            animate={{y:0, opacity:1}}
-            transition={{duration:0.65,delay:0.4}}
-          >
-          <motion.div 
-            
-          >
-            <div className="modal-container">
-              <div className="modal">
-                <div className="modal-header">
-                  <h2>withdrawal via {activeMethod.method}</h2>
-                  <p>min: {activeMethod.min} </p>
+    <div className="ud-layout">
+      {loader && <Loader />}
+      <Userdashboardheader route={route} />
+
+      <div className="ud-main">
+        <header className="ud-topbar">
+          <div className="ud-topbar-left">
+            <p className="ud-greeting">Withdraw</p>
+          </div>
+          <div className="ud-topbar-right">
+            <div className="ud-notif-btn"><IoMdNotifications /></div>
+            <div className="ud-user-avatar"><FaUserAlt size={14} /></div>
+          </div>
+        </header>
+
+        <div className="ud-content">
+
+          {showModal && activeMethod && (
+            <div className="ud-modal-overlay">
+              <div className="ud-modal">
+                <button className="ud-modal-close" onClick={() => setShowModal(false)}><MdClose size={16} /></button>
+                <p className="ud-modal-title">Withdraw via {activeMethod.method}</p>
+                <p className="ud-modal-sub">Minimum: <strong>${activeMethod.min}</strong></p>
+                <div className="ud-amount-input-wrap">
+                  <span className="ud-amount-prefix">$</span>
+                  <input type="number" placeholder="0.00" className="ud-amount-input" onChange={e => setWithdrawAmount(e.target.value)} />
+                  <span className="ud-amount-suffix">USD</span>
                 </div>
-              <MdClose className='close-modal-btn' onClick={()=>{setShowModal(false)}}/>
-                <div className="modal-input-container">
-                  <div className="modal-input">
-                    <input type="tel" placeholder='0.00' onChange={(e)=>{
-                      setWithdrawAmount(parseInt(e.target.value))
-                    }}/>
-                    <span>USD</span>
+                <div className="ud-modal-actions">
+                  <button className="ud-btn-ghost" onClick={() => setShowModal(false)}>Cancel</button>
+                  <button className="ud-btn-primary" onClick={handleNext}>Continue <FiChevronRight /></button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="ud-section-header">
+            <h2>Withdrawal Methods</h2>
+            <p>Select a cryptocurrency to withdraw your funds</p>
+          </div>
+
+          <div className="udf-container">
+            <div className="ud-form-field">
+              <label>Select Cryptocurrency</label>
+              <select className="ud-form-select" defaultValue="" onChange={e => handleSelectMethod(e.target.value)}>
+                <option value="" disabled>Choose a method…</option>
+                {withdrawMethods.map(opt => (
+                  <option key={opt.id} value={opt.method}>{opt.method}</option>
+                ))}
+              </select>
+            </div>
+
+            {selectedCrypto && (
+              <div className="ud-card udf-method-card">
+                <div className="udf-method-header">
+                  <img src={selectedCrypto.image} alt={selectedCrypto.method} className="udf-coin-img" />
+                  <div>
+                    <p className="udf-method-name">{selectedCrypto.method}</p>
+                    <p className="udf-method-min">Min withdrawal: ${selectedCrypto.min}</p>
                   </div>
                 </div>
-                <div className="modal-btn-container">
-                  <button class="noselect" onClick={()=>{
-                    setShowModal(false)
-                  }}>
-                    <span class="text">close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg"       width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span>
-                  </button>
-                  <button className='next' onClick={()=>{
-                    if(withdrawAmount >= activeMethod.min){
-                      setCheckoutPage(true)
-                    }
-                    else if(isNaN(withdrawAmount)){
-                      Toast.fire({
-                        icon: 'warning',
-                        title: `Amount must be a number`
-                      })
-                    }
-                    else{
-                      Toast.fire({
-                        icon: 'warning',
-                        title: `Amount is less than withdrawal limit`
-                      })
-                      setCheckoutPage(false)
-                    }
-                  }}>
-                    <span class="label">Next</span>
-                    <span class="icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
-                    </span>
-                  </button>
-                </div>
+                <button className="ud-btn-primary" style={{width:'100%', justifyContent:'center', marginTop:'8px'}} onClick={() => { setActiveMethod(selectedCrypto); setShowModal(true) }}>
+                  Proceed to Withdraw <FiArrowRight />
+                </button>
               </div>
-            </div>
-            </motion.div>
-          </AnimatePresence >
-          }
-            <div className="page-swiper-wrapper">
-              <div className="floating-btn" onClick={()=>{
-                    navigate('/dashboard')
-                  }}>
-                <AiOutlineArrowLeft />
-              </div>
-              <div className="page-header hi">
-                  <h3>Choose an Option</h3>
-                  <h2>withdrawal Methods</h2>
-                  <p>Choose a withdrawal method to withdraw money.</p>
-              </div>
-              <div className="swiper-container">
-                <div className='updated-crypto-container'>
-                  <h2>Select Cryptocurrency</h2>
-                  <select onChange={handleChange} defaultValue="" className='crypto-select'>
-                    <option value="" disabled>Select method</option>
-                    {withdrawMethods.map(opt => (
-                      <option key={opt.id} value={opt.method}>
-                        {opt.method}
-                      </option>
-                    ))}
-                  </select>
-
-                  {selectedCrypto && (
-                  <div className='updated-crypto-card'>
-                    <div className="updated-img-cont">
-                      <img src={selectedCrypto.image} alt={selectedCrypto.method} className='updated-crypto-img' />
-                    </div>
-                    <p><strong>Method:</strong> {selectedCrypto.method}</p>
-                    <p><strong>Minimum withdrawal:</strong> ${selectedCrypto.min}</p>
-                    <button className="deposit-btn updated-btn" onClick={()=>{
-                        setActiveMethod({
-                          id:`${selectedCrypto.id}`,
-                          min:`${selectedCrypto.min}`,
-                          max:`${selectedCrypto.max}`,
-                          image:`${selectedCrypto.image}`,
-                          method:`${selectedCrypto.method}`,
-                          wallet:`${selectedCrypto.wallet}`
-                        })
-                        setShowModal(true)
-                      }}>proceed</button>
-                    </div>
-                  )}
-            </div>
-              
-            </div>
-              <button className="history-btn" onClick={()=>{
-                navigate('/withdrawlogs')
-              }}>
-                withdrawal history
-                <FiArrowRight />
-              </button>
+            )}
           </div>
-      </div>}
-      {
-        checkoutPage &&
-        <WithdrawReview Active={activeMethod} withdrawAmount={withdrawAmount} closepage={close} route={route} funded={userData.funded}/>
-      }
-    </>
+
+          <button className="udf-history-link" onClick={() => navigate('/withdrawlogs')}>
+            View withdrawal history <FiArrowRight />
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 

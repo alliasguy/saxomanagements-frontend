@@ -39,7 +39,7 @@ const Header = () => {
             transition={{ duration: 0.65 }}
         >
             <div className="logo-container">
-                <span className='txtlogo' style={{color:'white', fontWeight:'700', fontSize:'1.2rem', letterSpacing:'1px'}}>Saxo Managements</span>
+                <img src="/saxomanagements%20logo5.png" alt="Saxo Managements" className="header-logo" />
             </div>
             <nav>
                 <ul>
@@ -83,7 +83,7 @@ const Header = () => {
                 </div>
                 <div className="menu-card">
                     <div className="menu-card-image-conatiner">
-                        <span className='mobile-logo' style={{color:'white', fontWeight:'700', fontSize:'1.1rem', letterSpacing:'1px'}}>Saxo Managements</span>
+                        <img src="/saxomanagements%20logo5.png" alt="Saxo Managements" className="header-logo" />
                     </div>
                     <ul className="list">
                         <li className="element"><Link to='/'>home</Link></li>

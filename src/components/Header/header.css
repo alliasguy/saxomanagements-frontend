@@ -32,6 +32,13 @@ header {
     flex-shrink: 0;
 }
 
+.header-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
 .txtlogo {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;

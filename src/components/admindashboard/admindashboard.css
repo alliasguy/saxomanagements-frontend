@@ -1,520 +1,955 @@
-.admin-dash{
-    min-height: auto;
+/* ─── ROOT ─────────────────────────────────────── */
+.admin-root {
+    min-height: 100vh;
     width: 100%;
-}
-.credit-form-container{
-    width: 85%;
-    padding: 20px 10px;
-    background-color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 40px auto
-}
-.admin-page-header{
-    height: auto;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.admin-page-header h3{
-    color: var(--mild-color);
-}
-.admin-page-header p{
-    color: whitesmoke;
-}
-.admin-page-header h2{
+    background: rgb(2, 6, 23);
     color: white;
-}
-.credit-form{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: auto;
-}
-.my-input{
-    height: 50px;
-    text-indent: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 40%;
-    outline: none;
-}
-.my-input:focus{
-    border:  2px solid rgb(157, 172, 255);
-}
-.my-input::placeholder{
-    text-transform: capitalize;
-    font-size: 1rem;
-}
-.credi-user{
-    padding: 15px 50px;
-    border-radius: 10px;
-    background-color:rgb(0, 63, 199);
-    color: white;
-    text-transform: capitalize;
-    cursor: pointer;
-    font-family: poppins;
-}
-.admin-user-display{
-    width: 95%;
-    background-color: white;
-    padding: 20px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-}
-.user-details-container{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-.user-email{
-    width: 40%;
-}
-.user-name{
-    width: 30%;
-}
-.user-password{
-    white-space: 20%;
-}
-.dashboard-wrapper{
-    flex-direction: column;
-    background-color: red;
+    font-family: 'Poppins', sans-serif;
 }
 
-.promo-btn,.manual-btn, .active-promo-btn, .approve-btn,.mail-btn{
-    background-color: rgb(4, 178, 4);
-    color: white !important;
+/* ─── LOGIN ─────────────────────────────────────── */
+.adm-login-bg {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    cursor: pointer;
-    width: fit-content;
-    padding: 8px 12px;
-    min-width: 100px;
-    margin:  0px 4px;
-}
-.mail-btn{
-    background-color: rgb(181, 49, 242);
-}
-.approve-btn{
-    background-color: rgb(19, 195, 133);
-}
-.promo-btn:hover{
-    background-color: rgb(0, 138, 39);
-}
-.manual-btn{
-    background-color: rgb(4, 143, 178);
-}
-.pdt-btn{
-    background-color: purple;
-}
-tbody{
-    overflow-x: scroll;
-}
-.active-promo-btn{
-    background-color: rgb(247, 45, 45);
-}
-.deactivate-card {
-    overflow: hidden;
-    position: relative;
-    background-color: #ffffff;
-    text-align: left;
-    border-radius: 0.5rem;
-    max-width: 290px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    background: rgb(2, 6, 23);
+    background-image: radial-gradient(ellipse at 60% 20%, rgba(37,172,208,0.08) 0%, transparent 60%);
+    padding: 20px;
 }
 
-.deactivate-card .headers {
-    padding: 1.25rem 1rem 1rem 1rem;
-    background-color: #ffffff;
-}
-
-.deactivate-card .image {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FEE2E2;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-}
-
-.deactivate-card .image svg {
-    color: #DC2626;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.deactivate-card .content {
-    margin-top: 0.75rem;
-    text-align: center;
-}
-
-.deactivate-card .title {
-    color: #111827;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.5rem;
-}
-
-.deactivate-card .message {
-    margin-top: 0.5rem;
-    color: #6B7280;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-}
-
-.deactivate-card .actions {
-    margin: 0.75rem 1rem;
-    background-color: #F9FAFB;
-}
-
-.deactivate-card .desactivate {
-    display: inline-flex;
-    padding: 0.5rem 1rem;
-    background-color: #DC2626;
-    color: #ffffff;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 500;
-    justify-content: center;
-    width: 100%;
-    border-radius: 0.375rem;
-    border-width: 1px;
-    border-color: transparent;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.deactivate-card .cancel {
-    display: inline-flex;
-    margin-top: 0.75rem;
-    padding: 0.5rem 1rem;
-    background-color: #ffffff;
-    color: #374151;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 500;
-    justify-content: center;
-    width: 100%;
-    border-radius: 0.375rem;
-    border: 1px solid #D1D5DB;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-.dash-b {
-    width: fit-content;
-    margin: auto;
-    padding-bottom:40px ;
-}
-.dash-b table{
-    overflow-x: auto;
-    width: fit-content;
-}
-.transaction-container{
-    overflow: auto;
-}
-.create-trader-section{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 10px;
-}
-
-/* From Uiverse.io by R1SH4BH81 */
-.create-trader-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #ffffff;
-    padding: 30px;
-    width: 80%;
+.adm-login-card {
+    background: rgb(8, 14, 32);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-::placeholder {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.create-trader-form button {
-    align-self: flex-end;
-}
-
-.flex-column>label {
-    color: #151717;
-    font-weight: 600;
-}
-
-.inputForm {
-    border: 1.5px solid #ecedec;
-    border-radius: 10px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    transition: 0.2s ease-in-out;
-}
-
-.create-trader-input {
-    margin-left: 10px;
-    border-radius: 10px;
-    border: none;
-    width: 85%;
-    height: 100%;
-}
-
-.create-trader-input:focus {
-    outline: none;
-}
-
-.inputForm:focus-within {
-    border: 1.5px solid #2d79f3;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.flex-row>div>label {
-    font-size: 14px;
-    color: black;
-    font-weight: 400;
-}
-
-.span {
-    font-size: 14px;
-    margin-left: 5px;
-    color: #2d79f3;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.button-submit {
-    margin: 20px 0 10px 0;
-    background-color: #151717;
-    border: none;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 10px;
-    height: 50px;
+    padding: 48px 40px;
     width: 100%;
-    cursor: pointer;
+    max-width: 420px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
 }
 
-.button-submit:hover {
-    background-color: #252727;
+.adm-login-logo {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 6px;
 }
 
-.p {
-    text-align: center;
-    color: black;
-    font-size: 14px;
-    margin: 5px 0;
+.adm-login-sub {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
+    margin-bottom: 36px;
 }
 
-.btn {
-    margin-top: 10px;
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    gap: 10px;
-    border: 1px solid #ededef;
-    background-color: white;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-.btn:hover {
-    border: 1px solid #2d79f3;
-}
-.traders-log-section{
-    width: 100%;
-}
-.admin-trader-card{
-    width: 100%;
-    position: relative;
-}
-.admin-trader-card-delete-btn-container{
-    position: absolute;
-    padding: 10px;
-    background-color: rgb(255, 255, 255);
-    top: 20px;
-    right: 20px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: red;
-    font-size: 2rem;
-    cursor: pointer;
-}
-.trade-input{
-    margin: 15px 0px;
-}
-.select-container {
+.adm-login-field {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 100%;
-    margin: 0px;
-    font-family: Arial, sans-serif;
-    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
-.custom-select {
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-    font-size: 16px;
-    transition: border-color 0.2s;
-}
-
-.custom-select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-.custom-select{
-    width: 100%;
-    padding: 10px;
-}
-@media screen and (max-width: 767px) {
-    .create-trader-form{
-        width: 100%;
-    }
-}
-
-/* View profile button */
-.view-profile-btn {
-    padding: 5px 10px;
-    background: rgba(37, 172, 208, 0.1);
-    border: 1px solid rgba(37, 172, 208, 0.4);
-    color: rgb(37, 172, 208);
-    border-radius: 5px;
+.adm-login-field label {
     font-size: 0.75rem;
     font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Profile modal */
-.profile-modal {
-    max-width: 600px;
-    width: 90vw;
-    max-height: 85vh;
+.adm-login-field input {
+    height: 50px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0 16px;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.adm-login-field input:focus {
+    border-color: rgba(37,172,208,0.5);
+}
+
+.adm-login-pw-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.adm-login-pw-wrap input {
+    width: 100%;
+    padding-right: 44px;
+}
+
+.adm-login-pw-wrap span {
+    position: absolute;
+    right: 14px;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.adm-login-btn {
+    width: 100%;
+    height: 52px;
+    background: rgb(37,172,208);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.2s;
+    font-family: inherit;
+}
+
+.adm-login-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.adm-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ─── SIDEBAR ─────────────────────────────────────── */
+.adm-sidebar {
+    width: 230px;
+    min-width: 230px;
+    background: rgb(5, 10, 25);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     overflow-y: auto;
 }
 
-.profile-modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 8px 0;
-}
-
-.profile-modal-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profile-modal-section-title {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 8px;
+.adm-sidebar-brand {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 0.5px;
+    padding: 0 8px;
+    margin-bottom: 36px;
 }
 
-.profile-modal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.adm-brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(37,172,208);
+    box-shadow: 0 0 8px rgba(37,172,208,0.6);
+    flex-shrink: 0;
 }
 
-.profile-modal-item {
+.adm-brand-logo {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.adm-nav {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
 }
 
-.profile-modal-item-full {
-    grid-column: span 2;
-}
-
-.profile-modal-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.35);
-}
-
-.profile-modal-value {
-    font-size: 0.88rem;
-    color: white;
-    font-weight: 500;
-}
-
-.profile-modal-no-kyc {
+.adm-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: rgba(255,255,255,0.45);
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.35);
-    font-style: italic;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    font-family: inherit;
 }
 
-.kyc-status-badge {
-    font-size: 0.65rem;
+.adm-nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.8);
+}
+
+.adm-nav-item.active {
+    background: rgba(37,172,208,0.12);
+    color: rgb(37,172,208);
+    font-weight: 600;
+}
+
+.adm-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    background: transparent;
+    border: 1px solid rgba(255,80,80,0.2);
+    border-radius: 10px;
+    color: rgba(255,100,100,0.7);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    font-family: inherit;
+    margin-top: 16px;
+}
+
+.adm-logout-btn:hover {
+    background: rgba(255,80,80,0.08);
+    color: rgb(255,100,100);
+}
+
+/* ─── MAIN ─────────────────────────────────────── */
+.adm-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* ─── TOPBAR ─────────────────────────────────────── */
+.adm-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgb(2, 6, 23);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.adm-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.adm-page-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
+.adm-count-badge {
+    background: rgba(37,172,208,0.12);
+    color: rgb(37,172,208);
+    border: 1px solid rgba(37,172,208,0.25);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.adm-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(37,172,208,0.15);
+    border: 1px solid rgba(37,172,208,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: rgb(37,172,208);
+}
+
+/* ─── CONTENT ─────────────────────────────────────── */
+.adm-content {
+    padding: 28px 32px;
+    flex: 1;
+    position: relative;
+}
+
+/* ─── TABLE ─────────────────────────────────────── */
+.adm-table-wrap {
+    width: 100%;
+    background: rgb(6, 11, 26);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.adm-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.adm-table thead tr {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.adm-table thead th {
+    padding: 14px 20px;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid;
+    color: rgba(255,255,255,0.3);
+    text-align: left;
+    white-space: nowrap;
 }
 
-.kyc-verified {
+.adm-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.15s;
+}
+
+.adm-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.adm-table tbody tr:hover {
+    background: rgba(255,255,255,0.025);
+}
+
+.adm-table td {
+    padding: 16px 20px;
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.adm-user-name {
+    display: block;
+    font-weight: 600;
+    color: white;
+    font-size: 0.88rem;
+}
+
+.adm-user-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+}
+
+.adm-balance {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
     color: rgb(72, 199, 130);
-    background: rgba(72, 199, 130, 0.1);
-    border-color: rgba(72, 199, 130, 0.3);
+    font-size: 0.88rem;
 }
 
-.kyc-pending {
+/* KYC badges */
+.adm-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.adm-badge-verified {
+    color: rgb(72,199,130);
+    background: rgba(72,199,130,0.1);
+    border: 1px solid rgba(72,199,130,0.25);
+}
+
+.adm-badge-pending {
     color: rgba(255,200,0,0.9);
     background: rgba(255,200,0,0.08);
-    border-color: rgba(255,200,0,0.3);
+    border: 1px solid rgba(255,200,0,0.2);
 }
 
-.kyc-doc-link {
-    font-size: 0.85rem;
-    color: rgb(37, 172, 208);
-    text-decoration: underline;
+/* Action menu */
+.adm-action-cell {
+    position: relative;
+}
+
+.adm-menu-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.15s;
+}
+
+.adm-menu-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.adm-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    background: rgb(10, 18, 40);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    z-index: 100;
+    min-width: 170px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.adm-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: background 0.12s;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.adm-dropdown-item:hover {
+    background: rgba(255,255,255,0.06);
+    color: white;
+}
+
+.adm-dropdown-item.danger {
+    color: rgba(255,100,100,0.8);
+}
+
+.adm-dropdown-item.danger:hover {
+    background: rgba(255,80,80,0.08);
+    color: rgb(255,100,100);
+}
+
+.adm-dropdown-item.success {
+    color: rgba(72,199,130,0.9);
+}
+
+.adm-dropdown-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 4px 0;
+}
+
+/* ─── SECTION HEADER ─────────────────────────────── */
+.adm-section-header {
+    margin-bottom: 24px;
+}
+
+.adm-section-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: white;
+}
+
+.adm-section-header p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 4px;
+}
+
+/* ─── CREATE TRADER FORM ─────────────────────────── */
+.adm-create-trader-wrap {
+    max-width: 700px;
+}
+
+.adm-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.adm-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adm-form-field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.adm-form-input {
+    height: 48px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 0 14px;
+    color: white;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    width: 100%;
+}
+
+.adm-form-input:focus {
+    border-color: rgba(37,172,208,0.4);
+}
+
+.adm-photo-upload {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.adm-photo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 2px dashed rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 1.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.adm-photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.adm-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(37,172,208,0.1);
+    border: 1px solid rgba(37,172,208,0.25);
+    border-radius: 10px;
+    color: rgb(37,172,208);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.adm-submit-btn {
+    grid-column: 1 / -1;
+    height: 50px;
+    background: rgb(37,172,208);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 8px;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+.adm-submit-btn:hover {
+    opacity: 0.88;
+}
+
+/* ─── TRADER CARDS ─────────────────────────────── */
+.adm-traders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.adm-trader-card {
+    background: rgb(6,11,26);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+}
+
+.adm-trader-card-delete {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,80,80,0.1);
+    border: 1px solid rgba(255,80,80,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,100,100,0.7);
+    transition: all 0.15s;
+    font-size: 1rem;
+}
+
+.adm-trader-card-delete:hover {
+    background: rgba(255,80,80,0.2);
+    color: rgb(255,100,100);
+}
+
+.adm-trader-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(37,172,208,0.25);
+    margin-bottom: 12px;
+}
+
+.adm-trader-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+}
+
+.adm-trader-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 14px;
+}
+
+.adm-trader-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.adm-trader-stat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+}
+
+.adm-trader-stat-label {
+    color: rgba(255,255,255,0.35);
+}
+
+.adm-trader-stat-value {
+    color: white;
+    font-weight: 600;
+}
+
+.adm-update-log-btn {
+    width: 100%;
+    height: 38px;
+    background: rgba(37,172,208,0.1);
+    border: 1px solid rgba(37,172,208,0.25);
+    border-radius: 10px;
+    color: rgb(37,172,208);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+
+.adm-update-log-btn:hover {
+    background: rgba(37,172,208,0.18);
+}
+
+/* ─── MODALS ─────────────────────────────────────── */
+.modal-container {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal {
+    background: rgb(8, 14, 30);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 460px;
+    padding: 32px;
+    position: relative;
+}
+
+.modal-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 24px;
+}
+
+.close-modal-btn {
+    position: absolute !important;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+}
+
+.modal-input-container { margin-bottom: 20px; }
+
+.modal-input {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 0 16px;
+    height: 52px;
+}
+
+.modal-input input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+.modal-input span {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.modal-btn-container {
+    display: flex;
+    gap: 12px;
+}
+
+.noselect, .next {
+    flex: 1;
+    height: 46px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+.noselect {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+}
+
+.next {
+    background: rgb(37,172,208);
+    color: white;
+}
+
+/* Deactivate card */
+.deactivate-card {
+    background: rgb(8,14,30);
+    border: 1px solid rgba(255,80,80,0.2);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+}
+
+.deactivate-card .headers { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.deactivate-card .image { color: rgb(255,100,100); font-size: 2rem; }
+.deactivate-card .title { font-size: 1rem; font-weight: 700; color: white; }
+.deactivate-card .message { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-top: 6px; }
+.deactivate-card .actions { display: flex; gap: 12px; margin-top: 20px; width: 100%; }
+.deactivate-card .desactivate {
+    flex: 1; height: 44px; background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.3);
+    border-radius: 10px; color: rgb(255,100,100); font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.deactivate-card .cancel {
+    flex: 1; height: 44px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: rgba(255,255,255,0.6); font-weight: 600; cursor: pointer; font-family: inherit;
+}
+
+/* Trader log modal extras */
+.select-container { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.select-container label { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 600; }
+.custom-select {
+    width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+    color: white; font-size: 0.88rem; outline: none; font-family: inherit;
+}
+.custom-select option, .custom-select optgroup { background: rgb(10,18,40); }
+
+/* Copy traders */
+.copy-traders-section { margin-top: 16px; }
+.copy-traders-section h4 { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.no-traders-msg { font-size: 0.82rem; color: rgba(255,255,255,0.25); }
+.copy-traders-list-container { display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto; }
+.copy-trader-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 10px 14px; }
+.ct-info { display: flex; flex-direction: column; gap: 2px; }
+.ct-name { font-size: 0.82rem; font-weight: 600; color: white; }
+.ct-email { font-size: 0.72rem; color: rgba(255,255,255,0.35); }
+.ct-balance { font-size: 0.72rem; color: rgb(72,199,130); font-family: monospace; }
+.ct-inputs { display: flex; gap: 8px; }
+.ct-amount-input { width: 80px; height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 10px; color: white; font-size: 0.82rem; outline: none; font-family: monospace; }
+.ct-type-select { height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 8px; color: white; font-size: 0.78rem; outline: none; }
+
+/* ─── EMPTY STATE ─────────────────────────────────── */
+.adm-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    color: rgba(255,255,255,0.25);
+    gap: 12px;
+}
+
+.adm-empty p { font-size: 0.9rem; }
+
+/* ─── BOTTOM NAV (mobile only) ───────────────────── */
+.adm-bottom-nav { display: none; }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Hide sidebar entirely — replaced by bottom nav */
+    .adm-sidebar { display: none; }
+
+    /* Bottom nav bar */
+    .adm-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgb(5, 10, 25);
+        border-top: 1px solid rgba(255,255,255,0.08);
+        z-index: 200;
+        padding: 6px 0 max(6px, env(safe-area-inset-bottom));
+    }
+
+    .adm-bottom-nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 8px 4px;
+        background: none;
+        border: none;
+        color: rgba(255,255,255,0.35);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+        transition: color 0.15s;
+    }
+
+    .adm-bottom-nav-item.active {
+        color: rgb(37,172,208);
+    }
+
+    .adm-bottom-nav-logout {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 8px 4px;
+        background: none;
+        border: none;
+        color: rgba(255,100,100,0.5);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    /* Topbar */
+    .adm-topbar { padding: 14px 16px; }
+    .adm-page-title { font-size: 1rem; }
+
+    /* Content — extra bottom padding for bottom nav */
+    .adm-content {
+        padding: 16px 12px 90px;
+    }
+
+    /* Table — horizontally scrollable */
+    .adm-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 12px;
+    }
+
+    .adm-table thead th,
+    .adm-table td {
+        padding: 12px 14px;
+        white-space: nowrap;
+    }
+
+    /* Trader grid — single column */
+    .adm-traders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Form grid — single column */
+    .adm-form-grid { grid-template-columns: 1fr; }
+
+    .adm-create-trader-wrap { max-width: 100%; }
+
+    /* Modals — full-width with breathing room */
+    .adm-login-card { padding: 32px 24px; }
+}
+
+@media (max-width: 480px) {
+    .adm-topbar { padding: 12px; }
+    .adm-count-badge { display: none; }
+    .adm-content { padding: 12px 10px 90px; }
 }

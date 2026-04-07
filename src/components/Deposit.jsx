@@ -1,201 +1,153 @@
-import React ,{useState,useRef}from 'react'
-import {MdOutlineContentCopy,MdOutlineDone} from 'react-icons/md'
-import {BsImageFill} from 'react-icons/bs'
-import {BsUpload} from 'react-icons/bs'
+import React, { useState, useRef } from 'react'
+import { MdOutlineContentCopy, MdOutlineDone } from 'react-icons/md'
+import { BsImageFill, BsUpload } from 'react-icons/bs'
+import { FiLink } from 'react-icons/fi'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
-import {FiLink} from 'react-icons/fi'
-import {AiOutlineArrowLeft} from 'react-icons/ai'
 import Loader from './Loader'
-const Deposit = ({amount,active,close,route}) => {
-    const navigate= useNavigate()
-    const [Active,setActive] = useState(active)
-    const [clipBoard, setClipBoard] = useState(false)
-    const [showImage,setShowImage] = useState()
-    const clipRef = useRef(null)
-    const [modal,setModal] = useState(false)
-    const [loader,setLoader] = useState(false)
 
-    // copy to clipboard function starts here 
-    const copy = ()=>{
-        navigator.clipboard.writeText(clipRef.current.value)
-    }
+const Toast = Swal.mixin({
+  toast: true, position: 'top-end',
+  showConfirmButton: false, timer: 3000, timerProgressBar: true,
+})
 
-    // upload proof image code starts here 
+const Deposit = ({ amount, active, close, route }) => {
+  const [copied, setCopied] = useState(false)
+  const [showImage, setShowImage] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const [loader, setLoader] = useState(false)
+  const clipRef = useRef(null)
 
-    const uploadProof = async (file)=>{
-        setModal(true)
-        console.log(file)
-        const formData = new FormData
-        formData.append('file',file)
-        formData.append('upload_preset','upload');
-        const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-          {
-          method:'POST',
-          body:formData,
+  const copyAddress = () => {
+    navigator.clipboard.writeText(active.wallet)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2500)
+  }
+
+  const uploadProof = async (file) => {
+    setUploading(true)
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('upload_preset', 'upload')
+    try {
+      const res = await (await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload', {
+        method: 'POST', body: formData,
+      })).json()
+      if (res.secure_url) setShowImage(res.secure_url)
+    } catch {
+      Toast.fire({ icon: 'error', title: 'Image upload failed' })
+    } finally { setUploading(false) }
+  }
+
+  const sendProof = async (e) => {
+    e.preventDefault()
+    if (!showImage) return Toast.fire({ icon: 'warning', title: 'Please upload proof of payment first' })
+    setLoader(true)
+    try {
+      const res = await (await fetch(`${route}/api/sendproof`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-access-token': localStorage.getItem('token') },
+        body: JSON.stringify({ amount, method: active.method }),
+      })).json()
+
+      if (res.status === 200) {
+        Toast.fire({ icon: 'success', title: `Deposit of $${amount} submitted successfully!` })
+
+        // Send confirmation emails
+        const emailBase = {
+          service_id: 'service_yqknanp',
+          template_id: 'template_vd5j2eh',
+          user_id: '0wcKB0jFnO7iPqwgZ',
         }
-        )
-        const res = await req.json()
-        if(res){
-            setShowImage(res.secure_url)
-            setModal(false)
-        }
-    }
-    
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
-    // send proof function starts here 
-
-    const sendProof = async()=>{
-        setLoader(true)
-        const req = await fetch(`${route}/api/sendproof`,{
-            method:'POST',
-            headers:{
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('token')
-            },
-            body:JSON.stringify({
-                amount:amount,
-                method:Active.method
-            })
-        })
-        const res = await req.json()
-
-        if(res.status === 200){
-            setLoader(false)
-            Toast.fire({
-                icon: 'congrats',
-                title: `You have successfully placed a deposit of ${amount}`
-            })
-            
-            const data = {
-           service_id: 'service_yqknanp',
-            template_id: 'template_vd5j2eh',
-            user_id: '0wcKB0jFnO7iPqwgZ',
-            template_params: {
-                'name': `${res.name}`,
-                'email': `${res.email}`,
-                'message': `${res.message}`,
-                'reply_to': `saxomanagements@gmail.com`,
-                'subject':`${res.subject}`
-            }
-            };
-            const adminData = {
-            service_id: 'service_yqknanp',
-            template_id: 'template_vd5j2eh',
-            user_id: '0wcKB0jFnO7iPqwgZ',
-            template_params: {
-                'name': `Bro`,
-                'email': `saxomanagements@gmail.com`,
-                'message': `${res.adminMessage}`,
-                'reply_to': `${res.email}`,
-                'subject':`${res.adminSubject}`
-            }
-            };
-         
-        const sendMail= async()=>{
-         await Promise.all([ fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        await Promise.all([
+          fetch('https://api.emailjs.com/api/v1.0/email/send', {
             method: 'POST',
-            headers:{
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data), 
-         }),
-             fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...emailBase, template_params: { name: res.name, email: res.email, message: res.message, reply_to: 'saxomanagements@gmail.com', subject: res.subject } }),
+          }),
+          fetch('https://api.emailjs.com/api/v1.0/email/send', {
             method: 'POST',
-            headers:{
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(adminData), 
-        })
-         ])
-        
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...emailBase, template_params: { name: 'Bro', email: 'saxomanagements@gmail.com', message: res.adminMessage, reply_to: res.email, subject: res.adminSubject } }),
+          }),
+        ])
+      } else if (res.status === 500) {
+        Toast.fire({ icon: 'error', title: 'User not found' })
+      } else {
+        Toast.fire({ icon: 'error', title: 'Internal server error' })
       }
-        sendMail()
-        }
-        else if(res.status === 500){
-            Toast.fire({
-              icon: 'error',
-              title: 'user does not exist'
-            })
-        }
-        else{
-            Toast.fire({
-                icon: 'error',
-                title: 'internal server error'
-              })
-        }
-    }
-        
+    } catch {
+      Toast.fire({ icon: 'error', title: 'An error occurred' })
+    } finally { setLoader(false) }
+  }
+
   return (
-    <div>
-        {
-        loader && 
-          <Loader />
-      }
-        {/* <Userdashboardheader route={route}/> */}
-        <div className="checkout-page">
-                <div className="floating-btn" onClick={()=>{
-                    close()
-                }}>
-                    <AiOutlineArrowLeft />
-                </div>
-                <h3>deposit confirm</h3>
-                <p>confirm your deposit by uploading a proof of payment, after paying</p>
-            <div className="checkout-info-container">
-                <p>You have requested <span className='bold'>{amount} USD</span> , Please pay <span className='bold'>{amount} USD</span>  for successful payment</p>
-                <h3>Please copy Link to copy wallet address and make payment</h3>
-                <div className="click-to-copy-container">
-                    <span className='clipboard-btn'>
-                       <FiLink />
-                    </span>
-                    <input type="text" value={Active.wallet} ref={clipRef}/>
-                    <span className={`clipboard-btn ${clipBoard ? <MdOutlineDone /> : ''}` } onClick={()=>{
-                        copy()
-                        setClipBoard(!clipBoard)
-                    }}>
-                        {
-                            clipBoard ?
-                            <MdOutlineDone /> : <MdOutlineContentCopy />
-                        }
-                    </span>
-                </div>
-                <div className="proof-container">
-                    <form action="" className='proof-form' onSubmit={(e)=>{
-                        e.preventDefault()
-                        sendProof()
-                    }}>
-                        <p>upload proof of payment</p>
-                          <div className="proof-img-container">
-                              {
-                                  modal && <div className="ping-container"><div class="ping"></div></div> 
-                              }
-                            {
-                                showImage === undefined &&  !modal ? <BsImageFill /> : <img src={`${showImage}`} alt="" className='proof-image'/> 
-                            }
-                        </div>
-                        <label htmlFor="proof-img" className='proof-label'>
-                            <BsUpload />
-                            <input type="file" accept='.jpg, .png, .svg, .webp, .jpeg' name="images" id="proof-img" className='proof-input' required onChange={(e)=>{
-                                 const image = e.target.files[0]
-                                 uploadProof(image)
-                            }} />
-                        </label>
-                        <input type="submit" value="send proof" className='proof-submit-btn' />
-                    </form>
-                </div>  
-            </div>
+    <div className="dep-wrap">
+      {loader && <Loader />}
+
+      <div className="ud-section-header">
+        <h2>Deposit Address</h2>
+        <p>Send your payment to the address below, then upload proof</p>
+      </div>
+
+      <div className="ud-card dep-address-card">
+        {/* Amount notice */}
+        <div className="dep-amount-notice">
+          You have requested <strong>${amount} USD</strong>. Please send exactly{' '}
+          <strong>${amount} USD</strong> worth of <strong>{active.method}</strong> to the address below.
         </div>
+
+        {/* Wallet address */}
+        <div>
+          <p className="dep-address-label">
+            <FiLink style={{display:'inline', marginRight:'6px'}} />
+            {active.method} Wallet Address
+          </p>
+          <div className="dep-copy-row">
+            <input
+              ref={clipRef}
+              readOnly
+              value={active.wallet}
+              className="dep-address-input"
+            />
+            <button className={`dep-copy-btn ${copied ? 'dep-copied' : ''}`} onClick={copyAddress}>
+              {copied ? <><MdOutlineDone /> Copied!</> : <><MdOutlineContentCopy /> Copy</>}
+            </button>
+          </div>
+        </div>
+
+        {/* Proof upload */}
+        <form onSubmit={sendProof} className="dep-proof-section">
+          <p className="dep-address-label">Upload Proof of Payment</p>
+
+          <div className="dep-proof-preview">
+            {uploading ? (
+              <div className="dep-uploading-badge">Uploading image…</div>
+            ) : showImage ? (
+              <img src={showImage} alt="Proof" />
+            ) : (
+              <div className="dep-proof-placeholder">
+                <BsImageFill />
+                <span>No image selected</span>
+              </div>
+            )}
+          </div>
+
+          <label htmlFor="dep-proof-file" className="dep-upload-label">
+            <BsUpload /> Choose Image
+            <input
+              type="file"
+              id="dep-proof-file"
+              accept=".jpg,.png,.svg,.webp,.jpeg"
+              style={{ display: 'none' }}
+              onChange={e => { if (e.target.files[0]) uploadProof(e.target.files[0]) }}
+            />
+          </label>
+
+          <button type="submit" className="ud-btn-primary" style={{ width: '100%', justifyContent: 'center', height: '48px' }}>
+            Submit Proof of Payment
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

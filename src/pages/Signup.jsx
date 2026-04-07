@@ -270,9 +270,7 @@ useEffect(() => {
           e.preventDefault()
           Signup()
         }}>
-          <span className="signup-logo" style={{fontWeight:'700', fontSize:'1.2rem', letterSpacing:'1px', cursor:'pointer', color:'inherit'}} onClick={() => {
-            navigate('/')
-          }}>Saxo Managements</span>
+          <img src="/saxomanagements%20logo5.png" alt="Saxo Managements" className="login-logo-img" onClick={() => navigate('/')} />
           <span class="subtitle">Create your Saxo Managements account and start growing your capital with expert-managed copy trading.</span>
           <div class="input_containers">
             <label class="input_labels" for="email_field">Firstname</label>

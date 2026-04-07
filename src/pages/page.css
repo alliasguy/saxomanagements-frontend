@@ -791,6 +791,15 @@ button {
     height: 100px;
 }
 
+.login-logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
 .submit {
     color: black !important;
 }

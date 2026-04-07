@@ -1,0 +1,124 @@
+/* ─── PLANS GRID ────────────────────────────────────── */
+.udp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.udp-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.udp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--plan-color, rgb(37,172,208));
+  border-radius: 16px 16px 0 0;
+}
+
+.udp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+.udp-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.udp-plan-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--plan-color, rgb(37,172,208));
+  box-shadow: 0 0 8px var(--plan-color, rgb(37,172,208));
+  flex-shrink: 0;
+}
+
+.udp-plan-type {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  text-transform: capitalize;
+}
+
+.udp-return {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.udp-return-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--plan-color, rgb(37,172,208));
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+}
+
+.udp-return-label {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.udp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex: 1;
+}
+
+.udp-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.udp-detail span  { color: rgba(255,255,255,0.35); }
+.udp-detail strong { color: white; font-weight: 600; }
+
+.udp-invest-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  margin-top: auto;
+}
+
+.udp-invest-btn:hover {
+  background: var(--plan-color, rgb(37,172,208));
+  border-color: transparent;
+  color: white;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .udp-grid { grid-template-columns: 1fr; }
+}

@@ -1,144 +1,91 @@
-import React from 'react'
-import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
-import Loader from '../Loader'
-import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { IoMdNotifications } from "react-icons/io";
-import { FaUserAlt, FaAngleDown } from "react-icons/fa";
-import { Link } from 'react-router-dom'
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import React, { useState, useEffect } from 'react'
 import './userdashboardcopytrade.css'
-import MobileDropdown from '../MobileDropdown'
+import { useNavigate, Link } from 'react-router-dom'
+import { IoMdNotifications } from 'react-icons/io'
+import { FaUserAlt } from 'react-icons/fa'
+import Loader from '../Loader'
+import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 
-const UserdashboardCopytrade = ({route}) => {
+const UserdashboardCopytrade = ({ route }) => {
+  const navigate = useNavigate()
   const [loader, setLoader] = useState(false)
   const [userData, setUserData] = useState()
-  const [showMobileDropdown, setShowMobileDropdown] = useState(false)
-  const navigate = useNavigate()
-  
-  
+
   useEffect(() => {
     const getData = async () => {
       try {
-        setLoader(true);
-  
-        // Check if a token exists
-          const token = localStorage.getItem('token');
-          console.log(token)
-        if (!token) {
-          navigate('/login');
-          return;
-        }
-  
-        // Fetch user data from the API
-        const response = await fetch(`${route}/api/getData`, {
-          headers: {
-            'x-access-token': token,
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        // Parse the response
-        const data = await response.json();
-  
-        // Handle errors from the API
-        if (data.status === 'error') {
-          localStorage.removeItem('token'); // Clear invalid token
-          navigate('/login');
-        } else {
-          setUserData(data); // Set user data
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-        navigate('/login'); // Navigate to login on failure
-      } finally {
-        setLoader(false); // Stop loader
-      }
-    };
-  
-    getData();
-  }, [navigate, route]);
-  
-  const closeMobileMenu = () => {
-    setShowMobileDropdown(false)
-  }
-  
+        setLoader(true)
+        const token = localStorage.getItem('token')
+        if (!token) { navigate('/login'); return }
+        const res = await (await fetch(`${route}/api/getData`, {
+          headers: { 'x-access-token': token, 'Content-Type': 'application/json' }
+        })).json()
+        if (res.status === 'error') { localStorage.removeItem('token'); navigate('/login') }
+        else setUserData(res)
+      } catch { navigate('/login') }
+      finally { setLoader(false) }
+    }
+    getData()
+  }, [navigate, route])
+
   return (
-   <main className='homewrapper'>
-         {
-           loader &&
-             <Loader />
-         }
-       <Userdashboardheader />
-         <section className='dashboardhomepage'>
-           
-            
-              <div className="dashboardheaderwrapper">
-                  <div className="header-notification-icon-container">
-                      <IoMdNotifications />
-                  </div>
-                  <div className="header-username-container">
-                    <h3>Hi, {userData ? userData.firstname : ''}</h3>
-                  </div>
-                  <div className="header-userprofile-container">
-                    <div className="user-p-icon-container">
-                      <FaUserAlt/>
-                    </div>
-                    <div className="user-p-drop-icon" onClick={() => { setShowMobileDropdown(!showMobileDropdown); }
-                      }>
-                        <FaAngleDown />
-                    </div>
-                    
-                  </div>
-                </div>
-                {userData && userData.trades.length !== 0 ? 
-          <div className="page-swiper-wrapper trans-page">
-            <MobileDropdown showStatus={showMobileDropdown} route={route} closeMenu={closeMobileMenu} />
-                        <div className="floating-btn trans-page-float" onClick={()=>{
-                        navigate('/dashboard')
-                      }}>
-                          <AiOutlineArrowLeft />
-                        </div>
-                      <div className="page-header">
-                          <h3>checkout your trade logs</h3>
-                          <h2>trade logs</h2>
-                          <p>we keep track of all the trades taken by your trader</p>
-                      </div>
-                      <div className="transaction-container no-ref">
-                        <table>
-                            <thead>
-                              <tr>
-                                <td>trade pair</td>
-                                <td>amount</td>
-                                <td>type</td>
-                                <td>date</td>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {
-                                userData.trades.map(refer =>
-                                  <tr className='tr'>
-                                    <td>{refer.pair}</td>
-                                    <td>$ {refer.amount} USD</td>
-                                    <td className={`${refer.tradeType === 'profit' ? 'profit' : 'loss'}`}> {refer.tradeType}</td>
-                                    <td>{refer.date}</td>
-                                  </tr>
-                                )
-                              }
-                            </tbody>
-                          </table>
-                          </div>
-                        </div>
-                      :
-                        <div className="empty-page">
-                          <MobileDropdown showStatus={showMobileDropdown} route={route} closeMenu={closeMobileMenu} />
-                          <img src="/preview.gif" alt="" className='empty-img dash-empty-img'/>
-                          <p>Your Trader has not placed any trades yet. Trades taken by your trader would be displayed here when available.</p> 
-                          <Link to='/fundwallet'>deposit</Link>
-                        </div>
-                  }
-          </section>
-        </main>  
+    <div className="ud-layout">
+      {loader && <Loader />}
+      <Userdashboardheader route={route} />
+
+      <div className="ud-main">
+        <header className="ud-topbar">
+          <div className="ud-topbar-left">
+            <p className="ud-greeting">Copy Trading</p>
+          </div>
+          <div className="ud-topbar-right">
+            <div className="ud-notif-btn"><IoMdNotifications /></div>
+            <div className="ud-user-avatar"><FaUserAlt size={14} /></div>
+          </div>
+        </header>
+
+        <div className="ud-content">
+          <div className="ud-section-header">
+            <h2>Trade Logs</h2>
+            <p>All trades placed by your assigned trader</p>
+          </div>
+
+          {userData?.trades?.length > 0 ? (
+            <div className="ud-table-wrap">
+              <table className="ud-table">
+                <thead>
+                  <tr>
+                    <th>Pair</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userData.trades.map((trade, i) => (
+                    <tr key={i}>
+                      <td>{trade.pair}</td>
+                      <td style={{fontFamily:'monospace', fontWeight:600}}>${trade.amount} USD</td>
+                      <td>
+                        <span className={`ud-badge ${trade.tradeType === 'profit' ? 'ud-badge-profit' : 'ud-badge-loss'}`}>
+                          {trade.tradeType}
+                        </span>
+                      </td>
+                      <td style={{color:'rgba(255,255,255,0.4)', fontSize:'0.8rem'}}>{trade.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="ud-empty">
+              <p>Your trader hasn't placed any trades yet. Trades will appear here once your trader begins managing your portfolio.</p>
+              <Link to="/fundwallet">Make a deposit to get started →</Link>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   )
 }
 

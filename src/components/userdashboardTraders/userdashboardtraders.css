@@ -1,357 +1,124 @@
-.traders-showcase{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    width: 100%;
-    background-image: url('../../../public/mirrorstatmockup8.png');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    height: 250px;
-    background-color: rgb(16, 73, 88);
-    border-radius: 20px;
+/* ─── BACK BUTTON ──────────────────────────────────── */
+.udt-back-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: none; border: none;
+  color: rgba(255,255,255,0.6); font-size: 0.9rem;
+  font-weight: 600; cursor: pointer; font-family: inherit;
 }
-.trader-show-case-wrapper{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.traders-showcase h2{
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: white;
-    text-transform: capitalize;
-    text-align: left;
-    align-self: flex-start;
-}
-.traders-showcase p{
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: left;
-    align-self: flex-start;
-    width: 30%;
-}
-.traders-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-direction: column;
-}
-.treader-header{
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.treader-header h1{
-    font-size: 2rem;
-    align-self: flex-start;
-}
-.search-input-container{
-    margin-top: 30px;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    height: 50px;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid rgb(59, 59, 59);
-    align-self: flex-start;
-}
-.search-input{
-    width: 90%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
-    padding: 0px 20px;
-    outline: 0px;
-    background-color: white;
-    border-radius: 0px 10px 10px 0px;
-}
-.search-btn{
-    width: 10%;
-    height: 100%;
-    color: rgb(31, 69, 150);
-    border: none;
-    border-radius: 10px 0px 0px 10px;
-    cursor: pointer;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
-.traders-card-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 30px;
-}
-.traders-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 45%;
-    height: auto;
-    border: 1px solid rgb(63, 63, 63);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px 0px;
-}
-.trader-card-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-.trader-card-image-container{
-    width: 25%;
-    height: 100px;
-}
-.trader-card-image-container img{
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-}
-.trader-card-text-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 70%;
-    height: 100%;
-    text-align: left;
-}
-.trader-card-text-container h3{
-    font-size: 1rem;
-    color: white;
-    text-transform: capitalize;
-    align-self: flex-start;
-}
-.trader-card-text-container p{
-    font-size: .8rem;
-    color: rgb(225, 225, 225);
-    text-align: left;
-    align-self: flex-start;
-}
-.trader-perfomance-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    flex-direction: column;
-}
-.trader-performance{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
-    text-align: left;
-    flex-direction: column;
-}
-.trader-performance-item{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100% ;
-    margin-top: 10px;
-    text-align: left;
-}
-.trader-performance-btn-container{
-    width: 100%;
-}
-.trader-card-btn{
-    width: 100%;
-    height: 50px;
-    background-color: var(--color-variant);
-    border-radius: 10px;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: capitalize;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-}
-.performance-value{
-    font-size: .9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(12, 205, 80);
-}
-.performance-value svg{
-    
-    font-size: 1.5rem;
-    margin-right: 10px;
-}
-.trader-profile-page{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    padding: 50px 30px;
-    border-radius: 20px;
-    flex-direction: column;
-}
-.trader-profile-container{
-    width: 90%;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-.trader-profile-card{
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 30px 20px ;
-    border-radius: 20px;
-    background-color: rgb(10, 16, 26);
-}
-.performance-value{
-    text-transform: capitalize;
-}
-.trader-plan-card{
-    width: 80% ;
-}
-.trader-plan-container{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.trader-page-header{
-    width: 80%;
-    text-align: left;
-}
-.trader-page-close-btn{
-    height: 50px;
-    width: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    align-self: flex-start;
-    background-color: rgb(41, 41, 41);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.trader-page-close-btn:hover{
-    background-color: rgb(21, 21, 21);
-    transition: .1s all ease-in-out;
-}
-.active-trader-container{
-    width: 100%;
-    padding: 0px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-.active-trader-header{
-    width: 100%;
-    text-align: left;
-    
-}
-.active-trader-card-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.trader-card-text-container button{
-    align-self: flex-start;
-    cursor: pointer;
-}
-.active-trader-card{
-    width: 100%;
-}
-.active-trader-card .trader-card-image-container{
-    height: 100px;
-    width: 100px;
-    
-}
-.active-trader-card .trader-card-text-container{
-    width: 85%;
-}
-@media screen and (max-width: 990px) {
-    .active-trader-container{
-        padding: 0px 0px;
-    }
-    .active-trader-card .trader-card-text-container {
-        width: 65%;
-    }
-    .trader-profile-page{
-        width: 100%;
-        padding: 10px;
-    }
-    .trader-profile-container{
-        width: 100%;
-        margin: 0px;
-    }
-    .trader-profile-card{
-        width: 100%;
-    }
+.udt-back-btn:hover { color: white; }
 
+/* ─── PROFILE VIEW ─────────────────────────────────── */
+.udt-profile-wrap { max-width: 560px; }
+
+.udt-profile-hero {
+  display: flex; align-items: center; gap: 20px; margin-bottom: 28px;
+}
+.udt-profile-img {
+  width: 72px; height: 72px; border-radius: 50%;
+  object-fit: cover; border: 2px solid rgba(37,172,208,0.3);
+  flex-shrink: 0;
+}
+.udt-profile-name { font-size: 1.2rem; font-weight: 800; color: white; margin-bottom: 4px; }
+.udt-profile-sub  { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+.udt-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;
+}
+.udt-stat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 12px 14px;
+}
+.udt-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+.udt-stat-value { font-size: 0.92rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 6px; }
+
+.udt-copy-btn { width: 100%; justify-content: center; height: 48px; font-size: 0.95rem; }
+
+/* ─── MY ACTIVE TRADER ─────────────────────────────── */
+.udt-active-card { }
+
+.udt-active-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.udt-active-img {
+  width: 56px; height: 56px; border-radius: 50%;
+  object-fit: cover; border: 2px solid rgba(72,199,130,0.3); flex-shrink: 0;
+}
+.udt-active-info { flex: 1; min-width: 0; }
+.udt-active-name {
+  font-size: 1rem; font-weight: 700; color: white; margin-bottom: 6px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 767px) {
-    .traders-showcase::after{
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(2, 12, 31, 0.7);
-        z-index: 1;
-    }
-    .traders-showcase{
-        height: auto;
-        position: relative;
-        padding: 50px 20px;
-        z-index: 1 ;
-    }
-    .traders-showcase p{
-        width: 100%;
-        z-index: 2;
-    }
-    .traders-showcase-header{
-        z-index: 2;
-    }
-    .trader-card-text-container{
-        width: 70%;
-    }
-    .active-trader-card{
-        width: 100%;
-    }
-    .search-input-container{
-        width: 100%;
-    }
-    .traders-card{
-        width: 100%;
-    }
+.udt-stop-btn {
+  flex-shrink: 0; height: 38px; padding: 0 14px;
+  font-size: 0.8rem; white-space: nowrap;
+}
+
+.udt-active-stats {
+  display: flex; gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.udt-active-stat {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.udt-active-stat span  { font-size: 0.7rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.5px; }
+.udt-active-stat strong { font-size: 0.9rem; font-weight: 700; color: white; }
+
+/* ─── SEARCH BAR ────────────────────────────────────── */
+.udt-search-wrap {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 0 16px; height: 48px;
+  margin-bottom: 24px; max-width: 400px;
+}
+.udt-search-icon { color: rgba(255,255,255,0.3); font-size: 1rem; flex-shrink: 0; }
+.udt-search-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: white; font-size: 0.88rem; font-family: inherit;
+}
+.udt-search-input::placeholder { color: rgba(255,255,255,0.25); }
+
+/* ─── TRADER GRID ───────────────────────────────────── */
+.udt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.udt-card { display: flex; flex-direction: column; gap: 0; }
+
+.udt-card-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
+}
+.udt-card-img {
+  width: 52px; height: 52px; border-radius: 50%;
+  object-fit: cover; border: 2px solid rgba(37,172,208,0.2); flex-shrink: 0;
+}
+.udt-card-name { font-size: 0.95rem; font-weight: 700; color: white; margin-bottom: 3px; }
+.udt-card-sub  { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+.udt-card-stats {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.udt-card-stat {
+  display: flex; justify-content: space-between; font-size: 0.8rem;
+}
+.udt-card-stat span  { color: rgba(255,255,255,0.35); }
+.udt-card-stat strong { color: white; font-weight: 600; }
+
+.udt-card-actions { display: flex; gap: 10px; }
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .udt-grid { grid-template-columns: 1fr; }
+  .udt-stats-grid { grid-template-columns: 1fr; }
+  .udt-active-stats { flex-wrap: wrap; gap: 16px; }
+  .udt-stop-btn { width: 100%; justify-content: center; }
 }

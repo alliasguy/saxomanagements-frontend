@@ -1,52 +1,178 @@
-.kyc-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #f7f7f7;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    font-family: Arial, sans-serif;
+/* ─── STATUS BANNER ────────────────────────────────── */
+.kyc-status-banner {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 20px; border-radius: 14px; margin-bottom: 28px;
+  border: 1px solid;
+}
+.kyc-status-pending  { background: rgba(255,200,0,0.07);  border-color: rgba(255,200,0,0.2);  color: rgba(255,200,0,0.9); }
+.kyc-status-review   { background: rgba(37,172,208,0.07); border-color: rgba(37,172,208,0.2); color: rgb(37,172,208); }
+.kyc-status-approved { background: rgba(72,199,130,0.08); border-color: rgba(72,199,130,0.2); color: rgb(72,199,130); }
+.kyc-status-rejected { background: rgba(255,100,100,0.08);border-color: rgba(255,100,100,0.2);color: rgb(255,100,100); }
+
+.kyc-status-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.kyc-status-label { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+.kyc-status-msg   { font-size: 0.8rem; opacity: 0.75; }
+
+/* ─── FORM WRAPPER ─────────────────────────────────── */
+.kyc-form-wrap { max-width: 720px; }
+
+/* ─── STEPPER ──────────────────────────────────────── */
+.kyc-stepper {
+  display: flex; align-items: center; margin-bottom: 36px;
+}
+.kyc-step {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.kyc-step-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.35);
+  transition: all 0.2s;
+}
+.kyc-step.active .kyc-step-circle {
+  background: rgba(37,172,208,0.15);
+  border-color: rgb(37,172,208);
+  color: rgb(37,172,208);
+}
+.kyc-step.done .kyc-step-circle {
+  background: rgba(72,199,130,0.15);
+  border-color: rgb(72,199,130);
+  color: rgb(72,199,130);
+}
+.kyc-step-label {
+  font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap;
+}
+.kyc-step.active .kyc-step-label { color: rgb(37,172,208); }
+.kyc-step.done .kyc-step-label   { color: rgb(72,199,130); }
+
+.kyc-step-line {
+  flex: 1; height: 2px; background: rgba(255,255,255,0.08); margin: 0 8px; margin-bottom: 22px;
+  transition: background 0.2s;
+}
+.kyc-step-line.done { background: rgba(72,199,130,0.4); }
+
+/* ─── FORM BODY ────────────────────────────────────── */
+.kyc-step-title {
+  font-size: 1rem; font-weight: 700; color: white;
+  margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.kyc-form h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-    text-align: center;
+.kyc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px;
+}
+.kyc-full { grid-column: 1 / -1; }
+
+/* ─── DOCUMENT UPLOADS ─────────────────────────────── */
+.kyc-uploads {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px;
+}
+.kyc-upload-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 16px;
+}
+.kyc-upload-label {
+  font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px;
+}
+.kyc-upload-hint { font-size: 0.72rem; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
+
+.kyc-upload-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px;
+  background: rgba(37,172,208,0.08); border: 1px solid rgba(37,172,208,0.2);
+  border-radius: 8px; color: rgb(37,172,208); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: all 0.15s;
+}
+.kyc-upload-btn:hover { background: rgba(37,172,208,0.15); }
+
+.kyc-upload-done {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.8rem; font-weight: 600; color: rgb(72,199,130);
 }
 
-.kyc-form label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #444;
+/* ─── NAVIGATION ────────────────────────────────────── */
+.kyc-nav {
+  display: flex; justify-content: flex-end; gap: 12px;
+  margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-.kyc-form input[type="text"],
-.kyc-form input[type="email"],
-.kyc-form input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+/* ─── SECTION TITLE ────────────────────────────────── */
+.kyc-section-title {
+  font-size: 0.88rem; font-weight: 700; color: rgba(255,255,255,0.6);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.kyc-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* ─── VERIFIED STATE ────────────────────────────────── */
+.kyc-verified-wrap { max-width: 600px; }
+
+.kyc-verified-hero {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 40px 20px 32px; gap: 12px;
+}
+.kyc-verified-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(72,199,130,0.12);
+  border: 2px solid rgba(72,199,130,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: rgb(72,199,130);
+}
+.kyc-verified-title { font-size: 1.4rem; font-weight: 800; color: white; margin: 0; }
+.kyc-verified-sub   { font-size: 0.85rem; color: rgba(255,255,255,0.4); max-width: 360px; line-height: 1.6; margin: 0; }
+
+.kyc-verified-details { margin-top: 0; }
+
+/* ─── DETAIL GRID (used in verified + review) ───────── */
+.kyc-detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.kyc-detail-item {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.kyc-detail-item:nth-last-child(-n+2) { border-bottom: none; }
+.kyc-detail-label {
+  font-size: 0.68rem; font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+.kyc-detail-value {
+  font-size: 0.88rem; font-weight: 600; color: white;
+  text-transform: capitalize;
 }
 
-.kyc-form button:hover {
-    background-color: #0056b3;
+/* ─── REVIEW STATE ──────────────────────────────────── */
+.kyc-review-wrap { max-width: 600px; }
+.kyc-review-card { display: flex; flex-direction: column; }
+
+.kyc-review-notice {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-top: 20px;
+  background: rgba(37,172,208,0.06);
+  border: 1px solid rgba(37,172,208,0.15);
+  border-radius: 10px; padding: 14px 16px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.6;
+  color: rgb(37,172,208);
+}
+
+/* ─── LOCKED STATE ─────────────────────────────────── */
+.kyc-locked {
+  text-align: center; padding: 40px;
+  color: rgba(255,255,255,0.4); font-size: 0.88rem; line-height: 1.6;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .kyc-grid    { grid-template-columns: 1fr; }
+  .kyc-uploads { grid-template-columns: 1fr; }
+  .kyc-stepper { gap: 0; }
+  .kyc-step-label { display: none; }
 }

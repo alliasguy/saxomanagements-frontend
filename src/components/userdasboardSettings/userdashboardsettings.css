@@ -1,0 +1,51 @@
+/* ─── SETTINGS WRAP ─────────────────────────────────── */
+.uds-wrap { max-width: 620px; }
+
+/* ─── PROFILE BANNER ────────────────────────────────── */
+.uds-profile-banner {
+  display: flex; align-items: center; gap: 20px; margin-bottom: 20px;
+}
+.uds-avatar-circle {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(37,172,208,0.15); border: 2px solid rgba(37,172,208,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; font-weight: 800; color: rgb(37,172,208); flex-shrink: 0;
+}
+.uds-banner-name  { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 4px; }
+.uds-banner-email { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+/* ─── TABS ──────────────────────────────────────────── */
+.uds-tabs {
+  display: flex; gap: 4px; margin-bottom: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 5px;
+}
+.uds-tab {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+  height: 38px; background: transparent; border: none; border-radius: 9px;
+  color: rgba(255,255,255,0.4); font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.uds-tab:hover { color: rgba(255,255,255,0.7); }
+.uds-tab.active { background: rgb(6,11,26); color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+/* ─── FORM CARD ─────────────────────────────────────── */
+.uds-form-card { }
+
+.uds-form-title {
+  font-size: 0.95rem; font-weight: 700; color: white;
+  margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.uds-form-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px;
+}
+.uds-full { grid-column: 1 / -1; }
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .uds-form-grid { grid-template-columns: 1fr; }
+  .uds-tabs { flex-direction: column; }
+}
