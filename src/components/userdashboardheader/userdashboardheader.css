@@ -44,8 +44,8 @@
 }
 
 .ud-brand-logo {
-    height: 36px;
-    width: auto;
+    height: 50px;
+    width: 100%;
     object-fit: cover;
     display: block;
 }
