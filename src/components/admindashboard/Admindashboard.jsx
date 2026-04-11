@@ -1023,6 +1023,16 @@ const Admindashboard = ({ route }) => {
                           <option value="NAMM">NAMM</option>
                           <option value="ASTI">ASTI</option>
                           <option value="IOBT">IOBT</option>
+                          <option value="ASML">ASML (ASML Holding)</option>
+                          <option value="LLY">LLY (Eli Lilly)</option>
+                          <option value="AVGO">AVGO (Broadcom)</option>
+                          <option value="NVO">NVO (Novo Nordisk)</option>
+                          <option value="TSM">TSM (Taiwan Semiconductor)</option>
+                          <option value="COST">COST (Costco)</option>
+                          <option value="PEP">PEP (PepsiCo)</option>
+                          <option value="MCD">MCD (McDonald's)</option>
+                          <option value="WMT">WMT (Walmart)</option>
+                          <option value="CRM">CRM (Salesforce)</option>
                         </optgroup>
 
                       </select>
