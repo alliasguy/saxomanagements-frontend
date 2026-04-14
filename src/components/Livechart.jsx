@@ -45,6 +45,15 @@ const TradingViewWidget = () => {
         'CAPITALCOM:SPX500', // S&P 500
         'CAPITALCOM:NAS100', // Nasdaq 100
         'CAPITALCOM:DAX40',  // Germany DAX
+
+        // 🔹 Stocks
+        'NASDAQ:BTDR',  // Bitdeer Technologies
+        'NASDAQ:CIFR',  // Cipher Mining
+        'NASDAQ:CRMD',  // CorMedix
+        'NYSE:HIMS',    // Hims & Hers Health
+        'NASDAQ:KEEL',  // Keele
+        'NASDAQ:UPXI',  // Upexi
+        'NASDAQ:CRDO',  // Credo Technology
       ],
       compareSymbols: [],
       details: true,
